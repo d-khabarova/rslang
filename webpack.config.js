@@ -17,7 +17,11 @@ module.exports = (env, options) => {
       filename: 'script.js'
     },
     module: {
-      rules: [        
+      rules: [
+        {
+          test: /.html$/i,
+          loader: 'html-loader',
+        },        
         {
           test: /\.scss$/,
           use: [
