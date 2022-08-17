@@ -1,0 +1,7 @@
+@import 'config';
+
+body {
+  color: $global-text-color;
+  background: $bg-color;
+  font-family: $global-font-family;
+}
