@@ -17,21 +17,15 @@ module.exports = (env, options) => {
       filename: 'script.js'
     },
     module: {
-      rules: [
-        {
-          test: /\.ts$/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env']
-            }
-          }
-        },
+      rules: [        
         {
           test: /\.scss$/,
           use: [
             MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader',
           ]
+        },
+        { 
+          test: /\.ts$/i, use: 'ts-loader' 
         },
         {
           test: /\.(png|svg|jpe?g|gif)$/i,
