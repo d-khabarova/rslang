@@ -2,7 +2,7 @@
   "name": "rslang",
   "version": "1.0.0",
   "description": "",
-  "main": "webpack.base.config.js",
+  "main": "index.ts",
   "scripts": {
     "dev": "webpack --mode development",
     "prod": "webpack --mode production",
