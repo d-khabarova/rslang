@@ -1,5 +1,5 @@
 import { ApiUsers, ApiSignIn } from '../types/apiTypes';
-import StorageController from '../controller/storage/storage';
+import StorageController from '../component/storage/storage';
 
 class API {
   location: string;
@@ -12,17 +12,22 @@ class API {
   }
 
   async createUser(user: ApiUsers) {
-    const rawResponse = await fetch(`${this.location}users`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(user),
-    });
-    const content = await rawResponse.json();
-    this.storage.parseToLocalStroage(content);
-    this.loginUser(user);
+    try {
+      const rawResponse = await fetch(`${this.location}users`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+      const content = await rawResponse.json();
+      console.log(content);
+      this.storage.parseToLocalStroage(content);
+      this.loginUser(user);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async loginUser(user: ApiSignIn) {

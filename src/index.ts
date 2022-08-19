@@ -1,9 +1,8 @@
-import API from './scripts/api/api';
+import App from './scripts/app';
 
-const api = new API();
-const user = { email: 'user4@user.com', password: 'pass4_123' };
-api.createUser(user);
-//  api.loginUser(user);
+const api = new App();
+
+api.start();
 
 const data: HTMLElement = document.createElement('p');
 data.innerText = 'Start RSlang!';

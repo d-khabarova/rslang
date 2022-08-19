@@ -1,4 +1,4 @@
-import addInformation from './functions';
+import { addInformation } from './functions';
 
 class StorageController {
   arr: Array<Array<string>>;
