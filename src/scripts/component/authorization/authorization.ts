@@ -1,5 +1,7 @@
 import API from '../../api/api';
-import { isAuth } from '../storage/functions';
+import {
+  isAuth, renderAuth, renderLogOutBnt, logOut,
+} from '../functions';
 import { ApiUsers } from '../../types/apiTypes';
 
 class Auth {
@@ -15,7 +17,7 @@ class Auth {
 
   constructor() {
     this.api = new API();
-    this.buttonOut = document.createElement('button');
+    this.buttonOut = document.getElementById('logout') as HTMLButtonElement;
     this.authForm = document.getElementById('auth_form') as HTMLFormElement;
     this.mail = '';
     this.pass = '';
@@ -23,22 +25,50 @@ class Auth {
 
   identification() {
     if (isAuth()) {
-      this.buttonOut.innerText = 'Выйти';
-      document.querySelector('body')?.appendChild(this.buttonOut);
-      this.authForm?.classList.add('hidden');
+      renderLogOutBnt();
+      this.logout();
     } else {
-      this.authForm?.classList.remove('hidden');
       this.authorization();
+      renderAuth();
     }
   }
 
-  authorization() {
-    (this.authForm.querySelector('button') as HTMLButtonElement).addEventListener('click', () => {
-      const mail: string = (this.authForm.querySelector('input[type=email]') as HTMLInputElement).value;
-      const pass: string = (this.authForm.querySelector('input[type=password]') as HTMLInputElement).value;
+  /*  authorization() {
+    this.authForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const mail: string = (this.authForm.querySelector('input[type=email]')
+      as HTMLInputElement).value;
+      const pass: string = (this.authForm.querySelector('input[type=password]')
+      as HTMLInputElement).value;
       const user: ApiUsers = { email: mail, password: pass };
-      console.log(user);
+      console.log(e.target);
       this.api.createUser(user);
+      renderLogOutBnt();
+    });
+  } */
+
+  authorization() {
+    const buttons = this.authForm.querySelectorAll('button');
+    buttons.forEach((button) => {
+      button.addEventListener('click', (e: Event) => {
+        e.preventDefault();
+        const mail: string = (this.authForm.querySelector('input[type=email]') as HTMLInputElement).value;
+        const pass: string = (this.authForm.querySelector('input[type=password]') as HTMLInputElement).value;
+        const user: ApiUsers = { email: mail, password: pass };
+        if (button.id === 'login') {
+          this.api.loginUser(user);
+        } else {
+          this.api.createUser(user);
+        }
+        renderLogOutBnt();
+      });
+    });
+  }
+
+  logout() {
+    this.buttonOut.addEventListener('click', (e) => {
+      e.preventDefault();
+      logOut();
     });
   }
 }

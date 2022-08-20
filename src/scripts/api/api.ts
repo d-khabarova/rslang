@@ -22,11 +22,10 @@ class API {
         body: JSON.stringify(user),
       });
       const content = await rawResponse.json();
-      console.log(content);
       this.storage.parseToLocalStroage(content);
       this.loginUser(user);
     } catch (error) {
-      console.log(error);
+      this.loginUser(user);
     }
   }
 

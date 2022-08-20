@@ -9,6 +9,7 @@ class App {
 
   start() {
     this.auth.identification();
+    this.auth.logout();
   }
 }
 
