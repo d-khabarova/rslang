@@ -1,6 +1,6 @@
 import API from '../../api/api';
 import {
-  isAuth, renderAuth, renderLogOutBnt, logOut,
+  isAuth, renderAuth, renderLogOutBnt, logOut, validateEmail, validatePassword,
 } from '../functions';
 import { ApiUsers } from '../../types/apiTypes';
 
@@ -33,34 +33,21 @@ class Auth {
     }
   }
 
-  /*  authorization() {
-    this.authForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const mail: string = (this.authForm.querySelector('input[type=email]')
-      as HTMLInputElement).value;
-      const pass: string = (this.authForm.querySelector('input[type=password]')
-      as HTMLInputElement).value;
-      const user: ApiUsers = { email: mail, password: pass };
-      console.log(e.target);
-      this.api.createUser(user);
-      renderLogOutBnt();
-    });
-  } */
-
   authorization() {
     const buttons = this.authForm.querySelectorAll('button');
     buttons.forEach((button) => {
-      button.addEventListener('click', (e: Event) => {
+      button.addEventListener('click', (e) => {
         e.preventDefault();
         const mail: string = (this.authForm.querySelector('input[type=email]') as HTMLInputElement).value;
         const pass: string = (this.authForm.querySelector('input[type=password]') as HTMLInputElement).value;
-        const user: ApiUsers = { email: mail, password: pass };
-        if (button.id === 'login') {
-          this.api.loginUser(user);
-        } else {
-          this.api.createUser(user);
+        if (validateEmail(mail) && validatePassword(pass)) {
+          const user: ApiUsers = { email: mail, password: pass };
+          if (button.id === 'login') {
+            this.api.loginUser(user);
+          } else {
+            this.api.createUser(user);
+          }
         }
-        renderLogOutBnt();
       });
     });
   }
