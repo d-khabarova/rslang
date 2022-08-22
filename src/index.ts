@@ -1,3 +1,3 @@
-const data: HTMLElement = document.createElement('p');
-data.innerText = 'Start RSlang!';
-document.querySelector('body')?.appendChild(data);
+import audioCall from './games/audiocall/audiocall';
+
+audioCall();

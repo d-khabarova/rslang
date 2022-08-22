@@ -1,0 +1,118 @@
+$bg-audiocall: pink;
+$bg-main: rgb(212, 143, 252);
+$bg-audiocall-card: rgb(42, 112, 165);
+$border-cards: brown;
+$border-menu: purple;
+$color-text: black;
+$bg-audioicon: aquamarine;
+$border-example: violet;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+.main {
+  min-height: 100vh;
+  background-color: $bg-main;
+}
+
+.audiocall-card {
+  width: 200px;
+  height: 300px;
+  background-color: $bg-audiocall-card;
+  border: 2px solid $border-cards;
+}
+
+.audiocall {
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-audiocall;
+  min-height: 100vh;
+}
+
+.none-view {
+  display: none;
+}
+
+.exit {
+  margin-left: auto;
+  button {
+    padding: 15px 30px;
+  }
+}
+
+.btn-exit {
+  font-size: 30px;
+  border: none;
+  background-color: transparent;
+}
+
+.game-menu {
+  margin: auto;
+  text-align: center;
+  border: 2px solid $border-menu;
+  color: $color-text;
+  h2 {
+    font-size: 40px;
+    letter-spacing: 13px;
+    font-weight: 300;
+  }
+
+  p {
+    font-size: 18px;
+    padding: 60px 0;
+  }
+
+  button {
+    min-width: 162px;
+    font-size: 24px;
+    padding: 19px 15px 21px;
+  }
+}
+
+.gameplay-audiocall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0 0 0;
+}
+
+.solution-field {
+  height: 180px;
+}
+
+.btn-audio {
+  background-image: url(/src/assets/svg/icon-audio.svg);
+  background-size: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: $bg-audioicon;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: none;
+}
+
+.answers-audiocall {
+  display: flex;
+  padding: 20px;
+  border: 2px solid;
+  button {
+    padding: 0 25px;
+    background-color: transparent;
+    border: none;
+  }
+}
+
+.btn-iDontKnow {
+  width: 200px;
+  height: 46px;
+  background-color: transparent;
+  border-radius: 3px;
+}
