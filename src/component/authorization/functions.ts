@@ -1,28 +1,18 @@
+import { elementCreator, inputCreator, buttonCreator } from '../../utils/elementsCreator';
+
 const authForm = document.createElement('form');
 authForm.setAttribute('id', 'auth_form');
-const inputMail = document.createElement('input');
-inputMail.setAttribute('type', 'email');
-inputMail.setAttribute('placeholder', 'E-mail');
+const inputMail = inputCreator('email', 'E-mail');
+const inputPass = inputCreator('password', 'Пароль');
+const btnLogin = buttonCreator('login', 'Войти');
+const btnRegistration = buttonCreator('registration', 'Регистрация');
+const errMsg = elementCreator('div', 'error,hidden');
 authForm.appendChild(inputMail);
-const inputPass = document.createElement('input');
-inputPass.setAttribute('type', 'password');
-inputPass.setAttribute('placeholder', 'Пароль');
 authForm.appendChild(inputPass);
-const btnLogin = document.createElement('button');
-btnLogin.setAttribute('id', 'login');
-btnLogin.textContent = 'Войти';
 authForm.appendChild(btnLogin);
-const btnRegistration = document.createElement('button');
-btnRegistration.setAttribute('id', 'registration');
-btnRegistration.textContent = 'Регистрация';
 authForm.appendChild(btnRegistration);
-const errMsg = document.createElement('div');
-errMsg.classList.add('error', 'hidden');
 authForm.appendChild(errMsg);
-const buttonOut = document.createElement('button');
-buttonOut.setAttribute('id', 'logout');
-buttonOut.textContent = 'Выйти';
-buttonOut.classList.add('hidden');
+const buttonOut = buttonCreator('logout', 'Выйти');
 const requiredLength = 8;
 
 export function renderAuth() {

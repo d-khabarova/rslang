@@ -1,4 +1,4 @@
-import API from '../../api/api';
+import API from '../../Api/api';
 import {
   renderAuth, renderLogOutBnt, logOut, validateEmail, validatePassword,
 } from './functions';
@@ -25,9 +25,9 @@ class Auth {
     }
   }
 
-  authorization() {
-    const authForm = document.getElementById('auth_form') as HTMLFormElement;
-    const buttons = authForm.querySelectorAll('button');
+  async authorization() {
+    const authForm = await document.getElementById('auth_form') as HTMLFormElement;
+    const buttons = await authForm.querySelectorAll('button');
     buttons.forEach((button) => {
       button.addEventListener('click', async (e) => {
         e.preventDefault();
