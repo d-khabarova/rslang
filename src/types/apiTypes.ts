@@ -1,7 +1,7 @@
-export interface ApiUsers { 
+export interface ApiUsers {
   name?: string;
   email: string;
-  password: string;   
+  password: string;
 }
 
 export interface ApiSignIn {

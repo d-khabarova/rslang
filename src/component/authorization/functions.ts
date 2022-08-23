@@ -25,12 +25,6 @@ buttonOut.textContent = 'Выйти';
 buttonOut.classList.add('hidden');
 const requiredLength = 8;
 
-export function renderLogOutBnt() {
-  document.querySelector('body')?.appendChild(buttonOut);
-  buttonOut.classList.remove('hidden');
-  authForm.classList.add('hidden');
-}
-
 export function renderAuth() {
   document.querySelector('body')?.appendChild(authForm);
   authForm.classList.remove('hidden');
@@ -43,6 +37,13 @@ export function logOut() {
     localStorage.clear();
     renderAuth();
   });
+}
+
+export function renderLogOutBnt() {
+  document.querySelector('body')?.appendChild(buttonOut);
+  buttonOut.classList.remove('hidden');
+  authForm.classList.add('hidden');
+  logOut();
 }
 
 export function setErrorMessage(message: string) {
