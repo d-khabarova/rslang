@@ -1,45 +1,35 @@
 import API from '../../api/api';
 import {
-  isAuth, renderAuth, renderLogOutBnt, logOut, validateEmail, validatePassword,
+  renderAuth, renderLogOutBnt, logOut, validateEmail, validatePassword,
 } from './functions';
+import { isAuth } from '../storage/functions';
 import { ApiUsers } from '../../types/apiTypes';
 
 class Auth {
   api: API;
 
-  buttonOut: HTMLButtonElement;
-
-  authForm: HTMLFormElement;
-
-  mail: string;
-
-  pass: string;
-
   constructor() {
     this.api = new API();
-    this.buttonOut = document.getElementById('logout') as HTMLButtonElement;
-    this.authForm = document.getElementById('auth_form') as HTMLFormElement;
-    this.mail = '';
-    this.pass = '';
   }
 
   identification() {
     if (isAuth()) {
       renderLogOutBnt();
-      this.logout();
+      logOut();
     } else {
-      this.authorization();
       renderAuth();
+      this.authorization();
     }
   }
 
   authorization() {
-    const buttons = this.authForm.querySelectorAll('button');
+    const authForm = document.getElementById('auth_form') as HTMLFormElement;
+    const buttons = authForm.querySelectorAll('button');
     buttons.forEach((button) => {
       button.addEventListener('click', (e) => {
         e.preventDefault();
-        const mail: string = (this.authForm.querySelector('input[type=email]') as HTMLInputElement).value;
-        const pass: string = (this.authForm.querySelector('input[type=password]') as HTMLInputElement).value;
+        const mail: string = (authForm.querySelector('input[type=email]') as HTMLInputElement).value;
+        const pass: string = (authForm.querySelector('input[type=password]') as HTMLInputElement).value;
         if (validateEmail(mail) && validatePassword(pass)) {
           const user: ApiUsers = { email: mail, password: pass };
           if (button.id === 'login') {
@@ -49,13 +39,6 @@ class Auth {
           }
         }
       });
-    });
-  }
-
-  logout() {
-    this.buttonOut.addEventListener('click', (e) => {
-      e.preventDefault();
-      logOut();
     });
   }
 }

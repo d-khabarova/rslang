@@ -1,29 +1,48 @@
-const buttonOut = document.getElementById('logout') as HTMLButtonElement;
-const authForm = document.getElementById('auth_form') as HTMLFormElement;
-const errMsg = authForm.querySelector('.error') as HTMLDivElement;
-
-export function addInformation(key: string, value: string) {
-  localStorage.setItem(key, value);
-}
-
-export function isAuth(): boolean {
-  const message = localStorage.getItem('message');
-  return message === 'Authenticated';
-}
+const authForm = document.createElement('form');
+authForm.setAttribute('id', 'auth_form');
+const inputMail = document.createElement('input');
+inputMail.setAttribute('type', 'email');
+inputMail.setAttribute('placeholder', 'E-mail');
+authForm.appendChild(inputMail);
+const inputPass = document.createElement('input');
+inputPass.setAttribute('type', 'password');
+inputPass.setAttribute('placeholder', 'Пароль');
+authForm.appendChild(inputPass);
+const btnLogin = document.createElement('button');
+btnLogin.setAttribute('id', 'login');
+btnLogin.textContent = 'Войти';
+authForm.appendChild(btnLogin);
+const btnRegistration = document.createElement('button');
+btnRegistration.setAttribute('id', 'registration');
+btnRegistration.textContent = 'Регистрация';
+authForm.appendChild(btnRegistration);
+const errMsg = document.createElement('div');
+errMsg.classList.add('error', 'hidden');
+authForm.appendChild(errMsg);
+const buttonOut = document.createElement('button');
+buttonOut.setAttribute('id', 'logout');
+buttonOut.textContent = 'Выйти';
+buttonOut.classList.add('hidden');
+const requiredLength = 8;
 
 export function renderLogOutBnt() {
+  document.querySelector('body')?.appendChild(buttonOut);
   buttonOut.classList.remove('hidden');
   authForm.classList.add('hidden');
 }
 
 export function renderAuth() {
+  document.querySelector('body')?.appendChild(authForm);
   authForm.classList.remove('hidden');
   buttonOut.classList.add('hidden');
 }
 
 export function logOut() {
-  localStorage.clear();
-  renderAuth();
+  buttonOut.addEventListener('click', (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    renderAuth();
+  });
 }
 
 export function setErrorMessage(message: string) {
@@ -32,7 +51,7 @@ export function setErrorMessage(message: string) {
 }
 
 export function validateEmail(email: string) {
-  const reg = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+  const reg = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;//  regexp from https://denis-creative.com/validatsiya-email-s-pomoshhyu-javascript/
   if (reg.test(email) === false) {
     const msg = 'Введите корректный e-mail';
     setErrorMessage(msg);
@@ -44,8 +63,8 @@ export function validateEmail(email: string) {
 }
 
 export function validatePassword(pass: string) {
-  if (pass.length < 8) {
-    const msg = 'Пароль должен быть не меньше 8 символов';
+  if (pass.length < requiredLength) {
+    const msg = `Пароль должен быть не меньше ${requiredLength} символов`;
     setErrorMessage(msg);
     return false;
   }
