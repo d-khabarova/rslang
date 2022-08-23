@@ -1,6 +1,6 @@
 import { ApiUsers, ApiSignIn } from '../types/apiTypes';
 import StorageController from '../component/storage/storage';
-import { setErrorMessage, renderLogOutBnt } from '../component/functions';
+import { setErrorMessage, renderLogOutBnt } from '../component/authorization/functions';
 
 class API {
   location: string;

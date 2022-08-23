@@ -1,4 +1,4 @@
-import App from './scripts/app';
+import App from './app';
 
 const api = new App();
 

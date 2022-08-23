@@ -1,7 +1,7 @@
 import API from '../../api/api';
 import {
   isAuth, renderAuth, renderLogOutBnt, logOut, validateEmail, validatePassword,
-} from '../functions';
+} from './functions';
 import { ApiUsers } from '../../types/apiTypes';
 
 class Auth {
