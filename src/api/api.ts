@@ -4,7 +4,6 @@ import { setErrorMessage, renderLogOutBnt } from '../component/authorization/fun
 
 class API {
   location: string;
-
   storage: StorageController;
 
   constructor() {
