@@ -39,7 +39,7 @@ class Auth {
             await this.api.createUser(user);
           }
           const content = await this.api.loginUser(user);
-          this.storage.parseToLocalStroage(content);
+          this.storage.parseToLocalStorage(content);
           renderLogOutBnt();
         }
       });

@@ -1,4 +1,4 @@
-import Auth from './component/authorization/authorization';
+import Auth from './components/authorization/authorization';
 
 class App {
   auth: Auth;

@@ -7,7 +7,7 @@ class StorageController {
     this.arr = [];
   }
 
-  parseToLocalStroage(content: object) {
+  parseToLocalStorage(content: object) {
     this.arr = Object.entries(content);
     this.arr.forEach(([key, value]) => {
       addInformation(key, value);

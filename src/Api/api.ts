@@ -1,5 +1,5 @@
 import { ApiUsers, ApiSignIn } from '../types/apiTypes';
-import { setErrorMessage } from '../component/authorization/functions';
+import { setErrorMessage } from '../components/authorization/functions';
 
 class API {
   base: string;

@@ -26,6 +26,8 @@ export function logOut() {
     e.preventDefault();
     localStorage.clear();
     renderAuth();
+    inputMail.value = '';
+    inputPass.value = '';
   });
 }
 
