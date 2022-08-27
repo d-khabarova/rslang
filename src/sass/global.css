@@ -1,6 +1,29 @@
-body {
-  color: #fff;
-  background: #2deef5;
-  font-family: sans-serif;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
-/*# sourceMappingURL=global.css.map */
+
+html {
+  font-family: "Montserrat", sans-serif;
+  color: #171512;
+  background-color: #fefbf5;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  color: #171512;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+  color: #d2c33e;
+}
