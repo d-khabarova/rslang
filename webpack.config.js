@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-// const webpack = require('webpack');
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -12,7 +11,7 @@ module.exports = (env, options) => {
 
   const config = {
     mode: isProduction ? 'production' : 'development',
-    devtool: isProduction ? 'none' : 'source-map',
+    devtool: isProduction ? false : 'source-map',
     entry: './src/index.ts',
     output: {
       path: path.join(__dirname, '/dist'),
