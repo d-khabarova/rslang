@@ -1,7 +1,10 @@
-import { btn, elem } from '../../utils/creatingElements';
-import getWords from '../../Api/api';
+import { btn, elem, btns } from '../../utils/creatingElements';
+import startAudioCall from './startAudioCall';
+import { IApiGetWords } from '../../types/apiTypes';
+import callGenerator from './callGenerator';
 
 export default function audioCall(): void {
+  let wordsPage: IApiGetWords[];
   btn('.audiocall-card').addEventListener('click', () => {
     elem('.header').classList.add('none-view');
     elem('.main').classList.add('none-view');
@@ -12,11 +15,15 @@ export default function audioCall(): void {
     elem('.main').classList.remove('none-view');
     elem('.audiocall').classList.add('none-view');
   });
-  btn('.start-audiocall').addEventListener('click', () => {
-    elem('.game-menu').classList.add('none-view');
-    elem('.gameplay-audiocall').classList.remove('none-view');
+  btns('.start-audiocall').forEach((b) => {
+    b.addEventListener('click', () => {
+      elem('.game-menu').classList.add('none-view');
+      elem('.gameplay-audiocall').classList.remove('none-view');
+    });
   });
-  btn('.test-btn').addEventListener('click', async () => {
-    console.log(await getWords(5, 29));
+  elem('.difficultyLevel').addEventListener('click', async (evt: MouseEvent) => {
+    const htmlButtonElement = evt.target as HTMLButtonElement;
+    wordsPage = await startAudioCall(htmlButtonElement);
+    await callGenerator(wordsPage);
   });
 }

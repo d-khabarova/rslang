@@ -36,10 +36,6 @@ button {
   min-height: 100vh;
 }
 
-.none-view {
-  display: none;
-}
-
 .exit {
   margin-left: auto;
   button {
@@ -66,13 +62,18 @@ button {
 
   p {
     font-size: 18px;
-    padding: 60px 0;
+    padding: 10px;
+  }
+
+  .game-usefulness {
+    padding: 0 0 60px 0;
   }
 
   button {
-    min-width: 162px;
+    width: 50px;
+    height: 50px;
     font-size: 24px;
-    padding: 19px 15px 21px;
+    border-radius: 50%;
   }
 }
 
@@ -84,7 +85,17 @@ button {
 }
 
 .solution-field {
-  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  div {
+    margin: 25px 0 50px;
+    display: flex;
+    align-items: center;
+    p {
+      font-size: 24px;
+    }
+  }
 }
 
 .btn-audio {
@@ -99,20 +110,41 @@ button {
   border: none;
 }
 
+.small {
+  margin: 0 30px 0 0;
+  background-size: 35px;
+  width: 60px;
+  height: 60px;
+}
+
+.big {
+  font-size: 35px;
+}
+
 .answers-audiocall {
   display: flex;
-  padding: 20px;
   border: 2px solid;
   button {
+    height: 50px;
     padding: 0 25px;
     background-color: transparent;
     border: none;
   }
 }
 
-.btn-iDontKnow {
+.next-btn {
   width: 200px;
   height: 46px;
   background-color: transparent;
   border-radius: 3px;
+}
+
+.answerImage {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.none-view {
+  display: none;
 }
