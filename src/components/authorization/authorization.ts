@@ -1,11 +1,12 @@
 import API from '../../Api/api';
 import {
-  renderAuth, renderLogOutBnt, logOut, validateEmail,
+  renderAuth, renderLogOutBnt, logOut, validateEmail, hideModal,
   validatePassword, authBtnHandler, showHiddenSections, hideSections,
 } from './functions';
 import { isAuth } from '../storage/functions';
 import { ApiUsers } from '../../types/apiTypes';
 import StorageController from '../storage/storage';
+import './authorization.scss';
 
 class Auth {
   api: API;
@@ -27,6 +28,7 @@ class Auth {
       hideSections();
     }
     authBtnHandler();
+    hideModal();
   }
 
   authorization() {

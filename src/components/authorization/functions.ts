@@ -1,20 +1,22 @@
 import { elementCreator, inputCreator, buttonCreator } from '../../utils/elementsCreator';
 
 const modalAuth = elementCreator('div', 'modal,auth_modal');
+const shading = elementCreator('div', 'shading');
 const authForm = document.createElement('form');
-authForm.setAttribute('id', 'auth_form');
 const inputMail = inputCreator('email', 'E-mail');
 const inputPass = inputCreator('password', 'Пароль');
 const btnLogin = buttonCreator('login', 'Войти');
 const btnRegistration = buttonCreator('registration', 'Регистрация');
 const errMsg = elementCreator('div', 'error,hidden');
+const buttonOut = buttonCreator('logout', 'Выйти');
+const requiredLength = 8;
+authForm.setAttribute('id', 'auth_form');
 authForm.appendChild(inputMail);
 authForm.appendChild(inputPass);
 authForm.appendChild(btnLogin);
 authForm.appendChild(btnRegistration);
 authForm.appendChild(errMsg);
-const buttonOut = buttonCreator('logout', 'Выйти');
-const requiredLength = 8;
+document.querySelector('body')?.appendChild(shading);
 
 export function showHiddenSections() {
   const sections = document.querySelectorAll('.for_auth_user');
@@ -31,6 +33,7 @@ export function hideSections() {
 }
 
 export function renderAuth() {
+  document.querySelector('body')?.appendChild(shading);
   document.querySelector('body')?.appendChild(modalAuth);
   modalAuth.appendChild(authForm);
   modalAuth.classList.add('hidden');
@@ -38,6 +41,7 @@ export function renderAuth() {
   buttonOut.classList.add('hidden');
   hideSections();
   (document.querySelector('.auth_btn a') as HTMLElement).innerHTML = 'Авторизация';
+  shading.classList.remove('visible');
 }
 
 export function logOut() {
@@ -47,12 +51,18 @@ export function logOut() {
     renderAuth();
     inputMail.value = '';
     inputPass.value = '';
+    errMsg?.classList.add('hidden');
+    errMsg.innerText = '';
   });
 }
 
 export function renderLogOutBnt() {
+  document.querySelector('body')?.appendChild(shading);
   document.querySelector('body')?.appendChild(modalAuth);
   modalAuth.classList.remove('hidden');
+  modalAuth.appendChild(errMsg);
+  errMsg.innerText = 'Вы действительно хотите выйти?';
+  errMsg.classList.remove('hidden');
   modalAuth.appendChild(buttonOut);
   buttonOut.classList.remove('hidden');
   authForm.classList.add('hidden');
@@ -60,6 +70,7 @@ export function renderLogOutBnt() {
   (document.querySelector('.auth_btn a') as HTMLElement).innerHTML = 'Выйти';
   logOut();
   modalAuth.classList.add('hidden');
+  shading.classList.remove('visible');
 }
 
 export function setErrorMessage(message: string) {
@@ -93,6 +104,16 @@ export function validatePassword(pass: string) {
 export function authBtnHandler() {
   document.querySelector('.auth_btn')?.addEventListener('click', (e) => {
     e.preventDefault();
+    shading.classList.add('visible');
     modalAuth.classList.remove('hidden');
+  });
+}
+
+export function hideModal() {
+  document.querySelector('.shading')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = e.target as Element;
+    modalAuth.classList.add('hidden');
+    target.classList.remove('visible');
   });
 }
