@@ -1,7 +1,10 @@
+import './index.scss';
+import { renderMainPage } from './main/main';
 import App from './app';
 import audioCall from './games/audiocall/audiocall';
 
-const api = new App();
+renderMainPage();
 
+const api = new App();
 api.start();
 audioCall();

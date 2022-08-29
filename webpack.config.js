@@ -3,6 +3,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const EslingPlugin = require('eslint-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, options) => {
   const isProduction = options.mode === 'production';
@@ -10,7 +11,7 @@ module.exports = (env, options) => {
   const config = {
     mode: isProduction ? 'production' : 'development',
     devtool: isProduction ? false : 'source-map',
-    entry: ['./src/index.ts', './src/global.scss'],
+    entry: './src/index.ts',
     output: {
       path: path.join(__dirname, '/dist'),
       filename: 'script.js',
@@ -27,7 +28,7 @@ module.exports = (env, options) => {
         },
         {
           test: /\.ts$/i,
-          use: 'ts-loader',
+          use: ['ts-loader'],
         },
         {
           test: /\.(png|svg|jpe?g|gif)$/i,
@@ -53,8 +54,15 @@ module.exports = (env, options) => {
       new EslingPlugin({
         extensions: 'ts',
       }),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: path.resolve(__dirname, 'src/assets'),
+            to: path.resolve(__dirname, 'dist/assets'),
+          },
+        ],
+      }),
     ],
   };
-
   return config;
 };
