@@ -14,7 +14,6 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   rules: {
     '@typescript-eslint/no-explicit-any': 2,
-    'object-curly-newline': 'off',
-    'max-len': ['error', { code: 120 }],
+    '@typescript-eslint/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
   },
 };
