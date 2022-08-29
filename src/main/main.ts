@@ -9,8 +9,8 @@ export function renderMainPage() {
         <li class="nav_item"><a href="#" class="nav_link">Учебник</a></li>
         <li class="nav_item"><a href="#" class="nav_link">Аудиовызов</a></li>
         <li class="nav_item"><a href="#" class="nav_link">Спринт</a></li>
-        <li class="nav_item"><a href="#" class="nav_link">Статистика</a></li>
-        <li class="nav_item"><a href="#" class="nav_link">Авторизация</a></li>
+        <li class="nav_item for_auth_user"><a href="#" class="nav_link">Статистика</a></li>
+        <li class="nav_item auth_btn"><a href="#" class="nav_link">Авторизация</a></li>
       </ul>
     </nav>
     <div class="burger" id="burger">

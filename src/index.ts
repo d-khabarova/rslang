@@ -4,5 +4,5 @@ import App from './app';
 
 renderMainPage();
 
-const api = new App();
-api.start();
+const app = new App();
+app.start();

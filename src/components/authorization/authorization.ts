@@ -1,6 +1,7 @@
 import API from '../../Api/api';
 import {
-  renderAuth, renderLogOutBnt, logOut, validateEmail, validatePassword,
+  renderAuth, renderLogOutBnt, logOut, validateEmail,
+  validatePassword, authBtnHandler, showHiddenSections, hideSections,
 } from './functions';
 import { isAuth } from '../storage/functions';
 import { ApiUsers } from '../../types/apiTypes';
@@ -19,10 +20,13 @@ class Auth {
     if (isAuth()) {
       renderLogOutBnt();
       logOut();
+      showHiddenSections();
     } else {
       renderAuth();
       this.authorization();
+      hideSections();
     }
+    authBtnHandler();
   }
 
   authorization() {

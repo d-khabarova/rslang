@@ -1,5 +1,6 @@
 import { elementCreator, inputCreator, buttonCreator } from '../../utils/elementsCreator';
 
+const modalAuth = elementCreator('div', 'modal,auth_modal');
 const authForm = document.createElement('form');
 authForm.setAttribute('id', 'auth_form');
 const inputMail = inputCreator('email', 'E-mail');
@@ -15,10 +16,28 @@ authForm.appendChild(errMsg);
 const buttonOut = buttonCreator('logout', 'Выйти');
 const requiredLength = 8;
 
+export function showHiddenSections() {
+  const sections = document.querySelectorAll('.for_auth_user');
+  sections.forEach((section) => {
+    section.classList.remove('hidden');
+  });
+}
+
+export function hideSections() {
+  const sections = document.querySelectorAll('.for_auth_user');
+  sections.forEach((section) => {
+    section.classList.add('hidden');
+  });
+}
+
 export function renderAuth() {
-  document.querySelector('body')?.appendChild(authForm);
+  document.querySelector('body')?.appendChild(modalAuth);
+  modalAuth.appendChild(authForm);
+  modalAuth.classList.add('hidden');
   authForm.classList.remove('hidden');
   buttonOut.classList.add('hidden');
+  hideSections();
+  (document.querySelector('.auth_btn a') as HTMLElement).innerHTML = 'Авторизация';
 }
 
 export function logOut() {
@@ -32,10 +51,15 @@ export function logOut() {
 }
 
 export function renderLogOutBnt() {
-  document.querySelector('body')?.appendChild(buttonOut);
+  document.querySelector('body')?.appendChild(modalAuth);
+  modalAuth.classList.remove('hidden');
+  modalAuth.appendChild(buttonOut);
   buttonOut.classList.remove('hidden');
   authForm.classList.add('hidden');
+  showHiddenSections();
+  (document.querySelector('.auth_btn a') as HTMLElement).innerHTML = 'Выйти';
   logOut();
+  modalAuth.classList.add('hidden');
 }
 
 export function setErrorMessage(message: string) {
@@ -64,4 +88,11 @@ export function validatePassword(pass: string) {
   errMsg?.classList.add('hidden');
   errMsg.innerText = '';
   return true;
+}
+
+export function authBtnHandler() {
+  document.querySelector('.auth_btn')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    modalAuth.classList.remove('hidden');
+  });
 }
