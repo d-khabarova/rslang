@@ -41,5 +41,17 @@ class API {
     const content = await rawResponse.json();
     return content;
   }
+
+  async getWords({ group, page }: { group: number; page: number }) {
+    const response: Response = await fetch(`${this.base}/words?group=${group}&page=${page}`);
+    const content = await response.json();
+    return content;
+  }
+
+  async getWordId(wordId: string) {
+    const response: Response = await fetch(`${this.base}/words/${wordId}`);
+    const content = await response.json();
+    return content;
+  }
 }
 export default API;
