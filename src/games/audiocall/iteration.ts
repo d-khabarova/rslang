@@ -37,8 +37,7 @@ export default async function iteration(
       'click',
       (evt: MouseEvent) => {
         const htmlButtonElement = evt.target as HTMLButtonElement;
-        const variant: string = htmlButtonElement.innerHTML.slice(2);
-        checkAnswer(variant, gameWords, gameStep);
+        checkAnswer(htmlButtonElement, gameWords, gameStep);
       },
       { once: true },
     );

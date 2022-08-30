@@ -1,7 +1,7 @@
 $bg-audiocall: pink;
 $bg-audiocall-card: rgb(42, 112, 165);
 $border-cards: brown;
-$border-menu: purple;
+$correct-answer: purple;
 $color-text: black;
 $bg-audioicon: aquamarine;
 $border-example: violet;
@@ -144,6 +144,11 @@ $border-example: violet;
 .answer {
   font-size: 40px;
   font-weight: 700;
+}
+
+.correctAnswerBtn {
+  color: $correct-answer;
+  text-decoration: underline;
 }
 
 .none-view {
