@@ -35,7 +35,7 @@ export default async function iteration(
   btns('.var').forEach((b) => {
     b.addEventListener(
       'click',
-      async (evt: MouseEvent) => {
+      (evt: MouseEvent) => {
         const htmlButtonElement = evt.target as HTMLButtonElement;
         const variant: string = htmlButtonElement.innerHTML.slice(2);
         if (variant === answer(gameWords.gameWords, gameStep).wordTranslate) {
@@ -59,7 +59,7 @@ export default async function iteration(
       { once: true },
     );
   });
-  elem('.answers-audiocall').onclick = async (evt: MouseEvent) => {
+  elem('.answers-audiocall').onclick = (evt: MouseEvent) => {
     const htmlButtonElement = evt.target as HTMLButtonElement;
     const variant: string = htmlButtonElement.innerHTML.slice(2);
     if (variant !== answer(gameWords.gameWords, gameStep).wordTranslate) {
