@@ -4,15 +4,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  // position: absolute;
-  // top: 0;
   width: 100%;
   height: 65px;
   font-size: 0.8rem;
-  // z-index: 10;
 
   .menu {
-    .nav_list { 
+    .nav_list {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -21,27 +18,34 @@
 
     .nav_item {
       padding: 0 15px;
-      
     }
-    
+
+    button {
+      border: none;
+      font: inherit;
+      color: inherit;
+      background-color: transparent;
+      cursor: pointer;
+    }
+
     .nav_link {
       position: relative;
       text-decoration: none;
       color: $colorText;
       line-height: 50px;
       transition: $transition-hover;
-      
+
       &:hover {
         color: $colorHover;
       }
-      
+
       &:active {
         color: $colorActive;
         border-bottom: 3px solid $colorActive;
         padding-bottom: 3.5px;
         transition: .2s;
       }
-      
+
       &.active {
         color: $colorActive;
         border-bottom: 3px solid $colorActive;
@@ -60,7 +64,7 @@
         transition: transform 0.5s;
       }
     }
-    
+
   }
 }
 
@@ -109,7 +113,7 @@
       align-items: center;
       gap: 60px;
     }
-  
+
     .benefit__card {
       padding-bottom: 30px;
       display: flex;
@@ -118,18 +122,18 @@
       gap: 30px;
       text-align: center;
     }
-  
+
     .benefit__card:hover {
       cursor: pointer;
     }
-  
+
     .benefit__card-title {
       margin: 0;
       font-weight: 400;
       font-size: 20px;
       color: $colorText;
     }
-  
+
     .button {
       padding: 12px 42px;
       border: 2px solid $colorActive;
@@ -141,13 +145,13 @@
       line-height: 130%;
       letter-spacing: 0.06em;
       color: $colorText;
-      transition:0.25s
+      transition: 0.25s
     }
-  
+
     .benefit__card:hover .button {
       background: $colorActive;
       color: $colorTextBtn;
-      transition:0.25s;
+      transition: 0.25s;
     }
   }
 
@@ -209,44 +213,44 @@
   }
 
   .menu.open {
-      transform: translateX(0);
+    transform: translateX(0);
   }
 
   .nav_list {
-      margin-top: 158px;
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
+    margin-top: 158px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
   }
 
   .nav_link {
-      font-size: 32px;
-      line-height: 160%;
+    font-size: 32px;
+    line-height: 160%;
   }
 
   .burger {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 30px;
-      cursor: pointer;
-      z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    cursor: pointer;
+    z-index: 2;
   }
-  
+
   .line {
-      width: 100%;
-      height: 2px;
-      background-color: $colorActive;
-      margin: 5px 0;
-      z-index: 15;
-      transition: $transition-hover;
+    width: 100%;
+    height: 2px;
+    background-color: $colorActive;
+    margin: 5px 0;
+    z-index: 15;
+    transition: $transition-hover;
   }
 
   .burger.open {
-      position: fixed;
-      right: 53px;
-      z-index: 15;
+    position: fixed;
+    right: 53px;
+    z-index: 15;
   }
 
   .burger.open .line1 {
@@ -258,7 +262,8 @@
   }
 
   .burger.open .line3 {
-    transform: translate(0px, -11px) rotate(45deg);;
+    transform: translate(0px, -11px) rotate(45deg);
+    ;
   }
 
   .greeting {

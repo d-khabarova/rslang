@@ -7,4 +7,5 @@ renderMainPage();
 
 const api = new App();
 api.start();
+
 audioCall();

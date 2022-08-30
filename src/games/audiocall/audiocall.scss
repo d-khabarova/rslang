@@ -1,26 +1,10 @@
 $bg-audiocall: pink;
-$bg-main: rgb(212, 143, 252);
 $bg-audiocall-card: rgb(42, 112, 165);
 $border-cards: brown;
 $border-menu: purple;
 $color-text: black;
 $bg-audioicon: aquamarine;
 $border-example: violet;
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-button {
-  cursor: pointer;
-}
-
-.main {
-  min-height: 100vh;
-  background-color: $bg-main;
-}
 
 .audiocall-card {
   width: 200px;
@@ -38,8 +22,10 @@ button {
 
 .exit {
   margin-left: auto;
+
   button {
     padding: 15px 30px;
+    cursor: pointer;
   }
 }
 
@@ -47,6 +33,7 @@ button {
   font-size: 30px;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .game-menu {
@@ -54,6 +41,7 @@ button {
   text-align: center;
   border: 2px solid $border-menu;
   color: $color-text;
+
   h2 {
     font-size: 40px;
     letter-spacing: 13px;
@@ -74,6 +62,7 @@ button {
     height: 50px;
     font-size: 24px;
     border-radius: 50%;
+    cursor: pointer;
   }
 }
 
@@ -88,10 +77,12 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   div {
     margin: 25px 0 50px;
     display: flex;
     align-items: center;
+
     p {
       font-size: 24px;
     }
@@ -108,6 +99,7 @@ button {
   height: 120px;
   border-radius: 50%;
   border: none;
+  cursor: pointer;
 }
 
 .small {
@@ -124,11 +116,13 @@ button {
 .answers-audiocall {
   display: flex;
   border: 2px solid;
+
   button {
     height: 50px;
     padding: 0 25px;
     background-color: transparent;
     border: none;
+    cursor: pointer;
   }
 }
 
@@ -137,6 +131,7 @@ button {
   height: 46px;
   background-color: transparent;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .answerImage {
