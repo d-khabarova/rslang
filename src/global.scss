@@ -29,6 +29,12 @@ a {
     color: $colorHover;
   }
 }
+button {
+  font-family: "Montserrat", sans-serif;
+  &:hover {
+    cursor: pointer;
+  }  
+}
 
 .hidden {
   display: none;

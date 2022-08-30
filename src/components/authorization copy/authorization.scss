@@ -3,8 +3,8 @@
 .shading{
   display: none;
   background: rgba(41, 41, 41, 0.6);
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   z-index: 10;
   position: fixed;
   top: 0;
@@ -26,7 +26,6 @@
   padding:50px;
   display: flex;
   flex-direction: column;
-  max-width: 75%;
 
   &.hidden {
     display: none;
@@ -35,7 +34,7 @@
 
 #auth_form {
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   
   &.hidden {
     display: none;
