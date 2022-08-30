@@ -1,5 +1,8 @@
+import './index.scss';
+import { renderMainPage } from './main/main';
 import App from './app';
 
-const api = new App();
+renderMainPage();
 
+const api = new App();
 api.start();
