@@ -1,5 +1,5 @@
 import renderAudiocall from './renderAudiocall';
-import { btn, elem, btns } from '../../utils/creatingElements';
+import { btn, elem, btns } from '../../utils/querySelectors';
 import startAudioCall from './startAudioCall';
 import { IApiGetWords } from '../../types/apiTypes';
 import callGenerator from './callGenerator';
@@ -22,6 +22,7 @@ export default function audioCall(): void {
     elem('#auth_form').classList.remove('none-view');
     elem('.footer').classList.remove('none-view');
     elem('.audiocall').classList.add('none-view');
+    elem('.answers-audiocall').innerHTML = '';
     if (elem('.answerImage')) {
       elem('.answerImage').remove();
       btn('.btn-audio').classList.remove('small');

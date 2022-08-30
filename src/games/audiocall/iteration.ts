@@ -1,7 +1,7 @@
 import { IApiGetWords } from '../../types/apiTypes';
 import IgameWords from '../../types/audiocallTypes';
 import { getTranslations } from '../../utils/random';
-import { elem, btns, btn } from '../../utils/creatingElements';
+import { elem, btns, btn } from '../../utils/querySelectors';
 import {
   loopStart, loopStep, answersNumber, numberingDifference,
 } from './consts';
@@ -9,6 +9,7 @@ import { base } from '../../Api/apiConstants';
 import incorrect from '../../assets/sounds/incorrect.mp3';
 import getAnswer from './getAnswer';
 import checkAnswer from './checkAnswer';
+import { elementCreator } from '../../utils/elementsCreator';
 
 let pathRecord: string;
 
@@ -21,9 +22,11 @@ export default async function iteration(
   const answerPosition: number = gameWords.gameWordsPosition[gameStep];
   // console.log(answerTranslate);
   const translations = getTranslations(page, answerTranslate, answerPosition);
-  const variantsBtns: NodeListOf<HTMLButtonElement> = btns('.var');
+  const answersField = elem('.answers-audiocall');
   for (let i = loopStart; i < answersNumber; i += loopStep) {
-    variantsBtns[i].innerHTML = `${i + numberingDifference} ${translations[i]}`;
+    const btnAnswer = elementCreator('button', 'var');
+    answersField.appendChild(btnAnswer);
+    btnAnswer.innerHTML = `${i + numberingDifference} ${translations[i]}`;
   }
   pathRecord = `${base}/${gameWords.gameWords[gameStep].audio}`;
   const wordPronunciation = new Audio(pathRecord);

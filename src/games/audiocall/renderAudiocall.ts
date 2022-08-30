@@ -1,5 +1,5 @@
 import './audiocall.scss';
-import { elem } from '../../utils/creatingElements';
+import { elem } from '../../utils/querySelectors';
 
 export default function renderAudiocall() {
   const audiocallSection = `
@@ -26,11 +26,6 @@ export default function renderAudiocall() {
       </div>
     </div>
     <div class="answers-audiocall">
-      <button class="var">         </button>
-      <button class="var">         </button>
-      <button class="var">         </button>
-      <button class="var">         </button>
-      <button class="var">         </button>
     </div>
     <button class="next-btn">НЕ ЗНАЮ</button>
   </div>
