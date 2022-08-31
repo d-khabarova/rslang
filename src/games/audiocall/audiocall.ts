@@ -4,10 +4,12 @@ import startAudioCall from './startAudioCall';
 import { IApiGetWords } from '../../types/apiTypes';
 import callGenerator from './callGenerator';
 import keyboardLevel from './keyboardEvents/keyboardLevel';
+import keyboardAnswer from './keyboardEvents/keyboardAnswer';
 
 export default function audioCall(): void {
   renderAudiocall();
   document.addEventListener('keydown', keyboardLevel);
+  document.addEventListener('keydown', keyboardAnswer);
   btn('.nav_audiocall').addEventListener('click', () => {
     elem('.header').classList.add('none-view');
     elem('.main').classList.add('none-view');
