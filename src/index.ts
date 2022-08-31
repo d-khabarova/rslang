@@ -5,7 +5,7 @@ import audioCall from './games/audiocall/audiocall';
 
 renderMainPage();
 
-const api = new App();
-api.start();
+const app = new App();
+app.start();
 
 audioCall();

@@ -18,22 +18,18 @@
 
     .nav_item {
       padding: 0 15px;
-    }
 
-    button {
-      border: none;
-      font: inherit;
-      color: inherit;
-      background-color: transparent;
-      cursor: pointer;
     }
 
     .nav_link {
       position: relative;
       text-decoration: none;
       color: $colorText;
-      line-height: 50px;
       transition: $transition-hover;
+      border: 0;
+      background: none;
+      padding-bottom: 3.5px;
+      border-bottom: 3px solid $colorBg;
 
       &:hover {
         color: $colorHover;
@@ -43,6 +39,7 @@
         color: $colorActive;
         border-bottom: 3px solid $colorActive;
         padding-bottom: 3.5px;
+        box-sizing: border-box;
         transition: .2s;
       }
 
@@ -263,7 +260,6 @@
 
   .burger.open .line3 {
     transform: translate(0px, -11px) rotate(45deg);
-    ;
   }
 
   .greeting {
