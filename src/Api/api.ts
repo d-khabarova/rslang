@@ -1,4 +1,4 @@
-import { ApiUsers, ApiSignIn, ApiGetWords } from '../types/apiTypes';
+import { ApiUsers, ApiSignIn } from '../types/apiTypes';
 import { setErrorMessage } from '../components/authorization/functions';
 
 class API {
