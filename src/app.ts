@@ -12,7 +12,7 @@ class App {
 
   start() {
     this.auth.identification();
-    this.sprint.start();
+    //  this.sprint.start();
   }
 }
 

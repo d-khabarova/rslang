@@ -39,7 +39,7 @@ class Sprint {
         e.preventDefault();
         this.group = button.getAttribute('data-level') as string;
         this.page = this.getRandomPage();
-        this.words = await this.api.getWords(this.group, this.page);
+        this.words = await this.api.getWordsSprint(this.group, this.page);
         this.startPlay(this.words);
       });
     });
