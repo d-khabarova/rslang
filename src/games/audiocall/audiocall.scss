@@ -1,0 +1,156 @@
+$bg-audiocall: pink;
+$bg-audiocall-card: rgb(42, 112, 165);
+$border-cards: brown;
+$correct-answer: purple;
+$color-text: black;
+$bg-audioicon: aquamarine;
+$border-example: violet;
+
+.audiocall-card {
+  width: 200px;
+  height: 300px;
+  background-color: $bg-audiocall-card;
+  border: 2px solid $border-cards;
+}
+
+.audiocall {
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-audiocall;
+  min-height: 100vh;
+}
+
+.exit {
+  margin-left: auto;
+
+  button {
+    padding: 15px 30px;
+    cursor: pointer;
+  }
+}
+
+.btn-exit {
+  font-size: 30px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.game-menu {
+  margin: auto;
+  text-align: center;
+  color: $color-text;
+
+  h2 {
+    font-size: 40px;
+    letter-spacing: 13px;
+    font-weight: 300;
+  }
+
+  p {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .game-usefulness {
+    padding: 60px 0;
+  }
+
+  button {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+.gameplay-audiocall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0 0 0;
+}
+
+.solution-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  div {
+    margin: 25px 0 50px;
+    display: flex;
+    align-items: center;
+
+    p {
+      font-size: 24px;
+    }
+  }
+}
+
+.btn-audio {
+  background-image: url(/src/assets/svg/icon-audio.svg);
+  background-size: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: $bg-audioicon;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.small {
+  margin: 0 30px 0 0;
+  background-size: 35px;
+  width: 60px;
+  height: 60px;
+}
+
+.big {
+  font-size: 35px;
+}
+
+.answers-audiocall {
+  padding: 0 0 25px 0;
+  display: flex;
+
+  button {
+    padding: 0 25px;
+    height: 50px;
+    font-size: 18px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.next-btn {
+  width: 200px;
+  height: 46px;
+  background-color: transparent;
+  border: 1px solid;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.answerImage {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.answer {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.correctAnswerBtn {
+  color: $correct-answer;
+  text-decoration: underline;
+}
+
+.none-view {
+  display: none;
+}

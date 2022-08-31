@@ -7,7 +7,7 @@ export function renderMainPage() {
       <ul class="nav_list">
         <li class="nav_item"><button class="nav_link active">Главная</button></li>
         <li class="nav_item"><button class="nav_link">Учебник</button></li>
-        <li class="nav_item"><button class="nav_link">Аудиовызов</button></li>
+        <li class="nav_item"><button class="nav_link nav_audiocall">Аудиовызов</button></li>
         <li class="nav_item"><button class="nav_link">Спринт</button></li>
         <li class="nav_item for_auth_user"><button class="nav_link">Статистика</button></li>
         <li class="nav_item auth_btn"><button class="nav_link">Авторизация</button></li>
