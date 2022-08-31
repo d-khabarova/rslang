@@ -7,9 +7,9 @@ const pagesPerLevel = 30;
 const api = new API();
 
 export default async function startAudioCall(
-  htmlButtonElement: HTMLButtonElement,
+  btnNumber: number,
 ): Promise<IApiGetWords[]> {
-  const difficultyLevel: number = Number(htmlButtonElement.innerHTML) - numberingDifference;
+  const difficultyLevel: number = btnNumber - numberingDifference;
   const makeARandomPage: number = getRandomInt(pagesPerLevel);
   const { wordsPage } = await api.getWords(difficultyLevel, makeARandomPage);
   return wordsPage;

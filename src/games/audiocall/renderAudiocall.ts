@@ -5,7 +5,7 @@ export default function renderAudiocall() {
   const audiocallSection = `
 <section class="audiocall none-view">
   <div class="exit"><button class="btn-exit">x</button></div>
-  <div class="game-menu">
+  <div class="game-menu none-view">
     <h2>АУДИОВЫЗОВ</h2>
     <p class="game-usefulness">Тренировка улучшает восприятие речи на слух.</p>
     <p>Уровень cложности:</p>

@@ -3,10 +3,11 @@ import { btn, elem, btns } from '../../utils/querySelectors';
 import startAudioCall from './startAudioCall';
 import { IApiGetWords } from '../../types/apiTypes';
 import callGenerator from './callGenerator';
+import keyboardLevel from './keyboardEvents/keyboardLevel';
 
 export default function audioCall(): void {
   renderAudiocall();
-  let wordsPage: IApiGetWords[];
+  document.addEventListener('keydown', keyboardLevel);
   btn('.nav_audiocall').addEventListener('click', () => {
     elem('.header').classList.add('none-view');
     elem('.main').classList.add('none-view');
@@ -37,7 +38,8 @@ export default function audioCall(): void {
   });
   elem('.difficultyLevel').addEventListener('click', async (evt: MouseEvent) => {
     const htmlButtonElement = evt.target as HTMLButtonElement;
-    wordsPage = await startAudioCall(htmlButtonElement);
+    const level: number = +htmlButtonElement.innerHTML;
+    const wordsPage: IApiGetWords[] = await startAudioCall(level);
     await callGenerator(wordsPage);
   });
 }
