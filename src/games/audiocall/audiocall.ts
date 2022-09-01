@@ -1,13 +1,13 @@
 import renderAudiocall from './renderAudiocall';
 import { btn, elem, btns } from '../../utils/querySelectors';
 import startAudioCall from './startAudioCall';
-import { IApiGetWords } from '../../types/apiTypes';
 import callGenerator from './callGenerator';
 import keyboardLevel from './keyboardEvents/keyboardLevel';
 import keyboardAnswer from './keyboardEvents/keyboardAnswer';
 import keyboardEnter from './keyboardEvents/keyboardEnter';
 import openMenu from './audiocallMenuOpen';
 import exit from './audiocallExit';
+import audiocall from './audiocallObjs';
 
 export default function audioCall(): void {
   renderAudiocall();
@@ -21,8 +21,8 @@ export default function audioCall(): void {
     b.addEventListener('click', async (evt: MouseEvent) => {
       const htmlButtonElement = evt.target as HTMLButtonElement;
       const level: number = +htmlButtonElement.innerHTML;
-      const wordsPage: IApiGetWords[] = await startAudioCall(level);
-      await callGenerator(wordsPage);
+      audiocall.page = await startAudioCall(level);
+      await callGenerator();
       elem('.game-menu').classList.add('none-view');
       elem('.gameplay-audiocall').classList.remove('none-view');
     });

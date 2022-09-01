@@ -1,13 +1,12 @@
 import audiocall from '../audiocallObjs';
-import { IApiGetWords } from '../../../types/apiTypes';
 import startAudioCall from '../startAudioCall';
 import callGenerator from '../callGenerator';
 import { elem } from '../../../utils/querySelectors';
 
 async function launchFromKeyboard(level: number) {
   if (level > 0 && level < 7) {
-    const wordsPage: IApiGetWords[] = await startAudioCall(level);
-    await callGenerator(wordsPage);
+    audiocall.page = await startAudioCall(level);
+    await callGenerator();
     elem('.game-menu').classList.add('none-view');
     elem('.gameplay-audiocall').classList.remove('none-view');
   }
