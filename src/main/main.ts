@@ -36,7 +36,7 @@ export function renderMainPage() {
         <div class="benefit__card">
           <img src="./assets/child7.png" alt="child2">
           <p class="benefit__card-title">Аудиовызов</p>
-          <button class="button">Попробовать</button>
+          <button class="button card_audiocall">Попробовать</button>
         </div>
         <div class="benefit__card">
           <img src="./assets/child6.png" alt="child3">

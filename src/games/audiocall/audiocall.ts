@@ -5,43 +5,24 @@ import { IApiGetWords } from '../../types/apiTypes';
 import callGenerator from './callGenerator';
 import keyboardLevel from './keyboardEvents/keyboardLevel';
 import keyboardAnswer from './keyboardEvents/keyboardAnswer';
+import openMenu from './audiocallMenuOpen';
+import exit from './audiocallExit';
 
 export default function audioCall(): void {
   renderAudiocall();
   document.addEventListener('keydown', keyboardLevel);
   document.addEventListener('keydown', keyboardAnswer);
-  btn('.nav_audiocall').addEventListener('click', () => {
-    elem('.header').classList.add('none-view');
-    elem('.main').classList.add('none-view');
-    elem('#auth_form').classList.add('none-view');
-    elem('.footer').classList.add('none-view');
-    elem('.gameplay-audiocall').classList.add('none-view');
-    elem('.game-menu').classList.remove('none-view');
-    elem('.audiocall').classList.remove('none-view');
-  });
-  btn('.btn-exit').addEventListener('click', () => {
-    elem('.header').classList.remove('none-view');
-    elem('.main').classList.remove('none-view');
-    elem('#auth_form').classList.remove('none-view');
-    elem('.footer').classList.remove('none-view');
-    elem('.audiocall').classList.add('none-view');
-    elem('.answers-audiocall').innerHTML = '';
-    if (elem('.answerImage')) {
-      elem('.answerImage').remove();
-      btn('.btn-audio').classList.remove('small');
-      elem('.answer').innerHTML = '';
-    }
-  });
+  btn('.nav_audiocall').addEventListener('click', openMenu);
+  btn('.card_audiocall').addEventListener('click', openMenu);
+  btn('.btn-exit').addEventListener('click', exit);
   btns('.start-audiocall').forEach((b) => {
-    b.addEventListener('click', () => {
+    b.addEventListener('click', async (evt: MouseEvent) => {
+      const htmlButtonElement = evt.target as HTMLButtonElement;
+      const level: number = +htmlButtonElement.innerHTML;
+      const wordsPage: IApiGetWords[] = await startAudioCall(level);
+      await callGenerator(wordsPage);
       elem('.game-menu').classList.add('none-view');
       elem('.gameplay-audiocall').classList.remove('none-view');
     });
-  });
-  elem('.difficultyLevel').addEventListener('click', async (evt: MouseEvent) => {
-    const htmlButtonElement = evt.target as HTMLButtonElement;
-    const level: number = +htmlButtonElement.innerHTML;
-    const wordsPage: IApiGetWords[] = await startAudioCall(level);
-    await callGenerator(wordsPage);
   });
 }
