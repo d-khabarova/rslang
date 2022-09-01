@@ -42,7 +42,7 @@ class API {
     return content;
   }
 
-  async getWords({ group, page }: { group: number; page: number }) {
+  async getWords(group: number, page: number) {
     const response: Response = await fetch(`${this.base}/words?group=${group}&page=${page}`);
     const content = await response.json();
     return content;
