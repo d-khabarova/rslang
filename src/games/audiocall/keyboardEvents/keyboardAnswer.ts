@@ -9,10 +9,10 @@ async function launchFromKeyboard() {
   const variants = btns('.var');
   const correctButton: HTMLButtonElement = variants[audiocall.answer - numberingDifference];
   const correctAnswer: string = variants[audiocall.answer - numberingDifference].innerHTML.slice(2);
-  if (correctAnswer !== getAnswer(audiocall.gameWords.gameWords).wordTranslate) {
+  if (correctAnswer !== getAnswer(audiocall.gameWords!.gameWords).wordTranslate) {
     new Audio(incorrect).play();
   } else if (!elem('.answerImage')) {
-    checkAnswer(correctButton, audiocall.gameWords);
+    checkAnswer(correctButton, audiocall.gameWords!);
   }
 }
 
