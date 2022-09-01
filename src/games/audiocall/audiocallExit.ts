@@ -1,4 +1,5 @@
 import { btn, elem } from '../../utils/querySelectors';
+import audiocall from './audiocallObjs';
 
 export default function exit() {
   elem('.header').classList.remove('none-view');
@@ -8,9 +9,12 @@ export default function exit() {
   elem('.audiocall').classList.add('none-view');
   elem('.gameplay-audiocall').classList.add('none-view');
   elem('.answers-audiocall').innerHTML = '';
+  audiocall.gameStep = 0;
   if (elem('.answerImage')) {
     elem('.answerImage').remove();
     btn('.btn-audio').classList.remove('small');
     elem('.answer').innerHTML = '';
+    btn('.next-btn').innerHTML = 'НЕ ЗНАЮ';
+    btn('.next-btn').classList.remove('big');
   }
 }

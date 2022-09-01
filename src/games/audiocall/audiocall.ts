@@ -5,6 +5,7 @@ import { IApiGetWords } from '../../types/apiTypes';
 import callGenerator from './callGenerator';
 import keyboardLevel from './keyboardEvents/keyboardLevel';
 import keyboardAnswer from './keyboardEvents/keyboardAnswer';
+import keyboardEnter from './keyboardEvents/keyboardEnter';
 import openMenu from './audiocallMenuOpen';
 import exit from './audiocallExit';
 
@@ -12,6 +13,7 @@ export default function audioCall(): void {
   renderAudiocall();
   document.addEventListener('keydown', keyboardLevel);
   document.addEventListener('keydown', keyboardAnswer);
+  document.addEventListener('keydown', keyboardEnter);
   btn('.nav_audiocall').addEventListener('click', openMenu);
   btn('.card_audiocall').addEventListener('click', openMenu);
   btn('.btn-exit').addEventListener('click', exit);

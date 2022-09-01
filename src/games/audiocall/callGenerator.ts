@@ -4,22 +4,21 @@ import { elem, btn } from '../../utils/querySelectors';
 import IgameWords from '../../types/audiocallTypes';
 import iteration from './iteration';
 import { gameSteps } from './consts';
-
-let gameStep = 0;
+import audiocall from './audiocallObjs';
 
 export default async function callGenerator(page: IApiGetWords[]) {
   const gameWords: IgameWords = getRandomGameWords(page);
-  await iteration(page, gameWords, gameStep);
+  await iteration(page, gameWords);
   btn('.next-btn').onclick = async () => {
-    if (gameStep === gameSteps && btn('.next-btn').innerHTML === 'НЕ ЗНАЮ') {
+    if (audiocall.gameStep === gameSteps && btn('.next-btn').innerHTML === 'НЕ ЗНАЮ') {
       alert('the game is over');
       elem('.game-menu').classList.remove('none-view');
       elem('.gameplay-audiocall').classList.add('none-view');
       elem('.answers-audiocall').innerHTML = '';
-      gameStep = 0;
+      audiocall.gameStep = 0;
       return;
     }
-    if (gameStep === gameSteps && btn('.next-btn').innerHTML === '⟶') {
+    if (audiocall.gameStep === gameSteps && btn('.next-btn').innerHTML === '⟶') {
       alert('the game is over');
       elem('.game-menu').classList.remove('none-view');
       elem('.gameplay-audiocall').classList.add('none-view');
@@ -29,13 +28,13 @@ export default async function callGenerator(page: IApiGetWords[]) {
       btn('.next-btn').innerHTML = 'НЕ ЗНАЮ';
       btn('.next-btn').classList.remove('big');
       elem('.answers-audiocall').innerHTML = '';
-      gameStep = 0;
+      audiocall.gameStep = 0;
       return;
     }
-    if (btn('.next-btn').innerHTML === 'НЕ ЗНАЮ' && gameStep < 9) {
-      gameStep += 1;
+    if (btn('.next-btn').innerHTML === 'НЕ ЗНАЮ' && audiocall.gameStep < 9) {
+      audiocall.gameStep += 1;
       elem('.answers-audiocall').innerHTML = '';
-      await iteration(page, gameWords, gameStep);
+      await iteration(page, gameWords);
     } else {
       elem('.answerImage').remove();
       btn('.btn-audio').classList.remove('small');
@@ -43,21 +42,21 @@ export default async function callGenerator(page: IApiGetWords[]) {
       btn('.next-btn').innerHTML = 'НЕ ЗНАЮ';
       btn('.next-btn').classList.remove('big');
       elem('.answers-audiocall').innerHTML = '';
-      gameStep += 1;
-      await iteration(page, gameWords, gameStep);
+      audiocall.gameStep += 1;
+      await iteration(page, gameWords);
     }
   };
   document.addEventListener('keydown', async (keyboardEvt: KeyboardEvent) => {
     if (!document.querySelector('.gameplay-audiocall.none-view') && keyboardEvt.key === 'Enter') {
-      if (gameStep === gameSteps && btn('.next-btn').innerHTML === 'НЕ ЗНАЮ') {
+      if (audiocall.gameStep === gameSteps && btn('.next-btn').innerHTML === 'НЕ ЗНАЮ') {
         alert('the game is over');
         elem('.game-menu').classList.remove('none-view');
         elem('.gameplay-audiocall').classList.add('none-view');
         elem('.answers-audiocall').innerHTML = '';
-        gameStep = 0;
+        audiocall.gameStep = 0;
         return;
       }
-      if (gameStep === gameSteps && btn('.next-btn').innerHTML === '⟶') {
+      if (audiocall.gameStep === gameSteps && btn('.next-btn').innerHTML === '⟶') {
         alert('the game is over');
         elem('.game-menu').classList.remove('none-view');
         elem('.gameplay-audiocall').classList.add('none-view');
@@ -67,13 +66,13 @@ export default async function callGenerator(page: IApiGetWords[]) {
         btn('.next-btn').innerHTML = 'НЕ ЗНАЮ';
         btn('.next-btn').classList.remove('big');
         elem('.answers-audiocall').innerHTML = '';
-        gameStep = 0;
+        audiocall.gameStep = 0;
         return;
       }
-      if (btn('.next-btn').innerHTML === 'НЕ ЗНАЮ' && gameStep < 9) {
-        gameStep += 1;
+      if (btn('.next-btn').innerHTML === 'НЕ ЗНАЮ' && audiocall.gameStep < 9) {
+        audiocall.gameStep += 1;
         elem('.answers-audiocall').innerHTML = '';
-        await iteration(page, gameWords, gameStep);
+        await iteration(page, gameWords);
       } else {
         elem('.answerImage').remove();
         btn('.btn-audio').classList.remove('small');
@@ -81,8 +80,8 @@ export default async function callGenerator(page: IApiGetWords[]) {
         btn('.next-btn').innerHTML = 'НЕ ЗНАЮ';
         btn('.next-btn').classList.remove('big');
         elem('.answers-audiocall').innerHTML = '';
-        gameStep += 1;
-        await iteration(page, gameWords, gameStep);
+        audiocall.gameStep += 1;
+        await iteration(page, gameWords);
       }
     }
   });
