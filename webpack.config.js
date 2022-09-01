@@ -31,6 +31,10 @@ module.exports = (env, options) => {
           use: ['ts-loader'],
         },
         {
+          test: /\.(png|svg|jpe?g|gif)$/i,
+          type: 'asset/resource',
+        },
+        {
           test: /\.mp3$/,
           type: 'asset/resource',
         },
@@ -57,7 +61,7 @@ module.exports = (env, options) => {
             to: path.resolve(__dirname, 'dist/assets'),
             globOptions: {
               dot: true,
-              gitignore: true,
+              gitignore: false,
               ignore: ['**/sounds/**'],
             },
           },

@@ -1,0 +1,104 @@
+@import '../../config.scss';
+
+$bg-sprint: rgb(207, 228, 247);
+$score-color: $colorActive;
+
+.sprint {
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-sprint;
+  min-height: 100vh;
+}
+
+.exit {
+  margin-left: auto;
+
+  button {
+    padding: 15px 30px;
+    cursor: pointer;
+  }
+}
+
+.btn-exit-sprint {
+  font-size: 30px;
+  border: none;
+  background-color: transparent;
+}
+
+.welcome {
+  margin: auto;
+  text-align: center;
+  color: $colorText;
+
+  h2 {
+    font-size: 40px;
+    letter-spacing: 13px;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .text {
+    padding: 60px 0;
+  }
+
+  button {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+.sprint-play {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0 0 0;
+  text-align: center;
+
+  .score_block {
+    font-size: 40px;
+    color: $score-color;
+  }
+
+  .counter_score {
+    margin: 10px 0;
+  }
+  h3 {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  button {
+    margin:5px 0;    
+    padding: 12px 42px;
+    border: 2px solid $colorActive;
+    border-radius: 100px;
+    font-size: 17px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: $colorText;
+    transition:0.25s;
+    min-width: 175px;
+
+    &:hover {
+      background: $colorActive;
+      color: $colorTextBtn;
+      cursor: pointer;
+    }
+  }    
+}
+
+.none-view {
+  display: none;
+}
