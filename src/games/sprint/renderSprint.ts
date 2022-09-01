@@ -31,6 +31,12 @@ export default function renderSprint() {
     <button id="false">Неверно</button>
     <button id="true">Верно</button></div>
   </div>
+  <div class="stat none-view">
+    <div class="good_title">Верно: <span class="good_count"></span></div>
+    <div class="good_stat"></div>
+    <div class="bad_title">Неверно: <span class="bad_count"></span></div>
+    <div class="bad_stat"></div>
+  </div>
 </section>
 `;
   const main = document.querySelector('body') as HTMLElement;

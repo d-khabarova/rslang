@@ -76,10 +76,13 @@ class Sprint {
     } else {
       badAnswer(this.ids[this.i]);
     }
-    if (this.i <= this.ids.length - 2) {
+    //  if (this.i <= this.ids.length - 2) {
+    if (this.i <= 5) {
       this.i += 1;
     } else {
       finish();
+      this.i = 0;
+      return;
       this.pages.push(this.page);
       this.page = this.getRandomPage();
       this.words = await this.api.getWordsSprint(this.group, this.page);

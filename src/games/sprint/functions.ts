@@ -1,5 +1,5 @@
 import getStatistic from './statistics';
-import { elementCreator } from '../../utils/elementsCreator';
+import { elem } from '../../utils/querySelectors';
 
 export const goodIds: Array<string> = [];
 export const badIds: Array<string> = [];
@@ -25,22 +25,12 @@ export function badAnswer(id: string) {
 }
 
 export async function finish() {
-  const main = document.querySelector('.main') as HTMLElement;
-  const stat = elementCreator('div', 'stat');
-  const goodTitle = elementCreator('div', 'good_title');
-  const goodStat = elementCreator('div', 'good_stat');
   const dataGoodStat = await getStatistic(goodIds);
-  const badTitle = elementCreator('div', 'bad_title');
-  const badStat = elementCreator('div', 'bad_stat');
   const dataBadStat = await getStatistic(badIds);
-  main.innerHTML = '';
-  goodTitle.innerText = `Верно: ${goodIds.length}`;
-  goodStat.innerHTML = dataGoodStat;
-  stat.appendChild(goodTitle);
-  stat.appendChild(goodStat);
-  badTitle.innerText = `Неверно: ${badIds.length}`;
-  badStat.innerHTML = dataBadStat;
-  stat.appendChild(badTitle);
-  stat.appendChild(badStat);
-  main.appendChild(stat);
+  elem('.good_count').innerHTML = `${goodIds.length}`;
+  elem('.good_stat').innerHTML = dataGoodStat;
+  elem('.bad_count').innerHTML = `${badIds.length}`;
+  elem('.bad_stat').innerHTML = dataBadStat;
+  elem('.stat').classList.remove('none-view');
+  elem('.sprint-play').classList.add('none-view');
 }

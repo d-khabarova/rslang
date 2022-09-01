@@ -15,6 +15,7 @@ function showSprint() {
   elem('#auth_form').classList.add('none-view');
   elem('.footer').classList.add('none-view');
   elem('.sprint-play').classList.add('none-view');
+  elem('.stat').classList.add('none-view');
   elem('.sprint').classList.remove('none-view');
   elem('.welcome').classList.remove('none-view');
   btns('.level button').forEach((button) => {
@@ -32,6 +33,10 @@ function hideSprint() {
   elem('.translate').innerHTML = '';
   elem('.score').innerHTML = '0';
   elem('.counter').innerHTML = '10';
+  elem('.good_count').innerHTML = '';
+  elem('.bad_count').innerHTML = '';
+  elem('.good_stat').innerHTML = '';
+  elem('.bad_stat').innerHTML = '';
 }
 
 export default function sprintBtnHandlers() {
