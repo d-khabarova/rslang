@@ -36,6 +36,7 @@ export default function renderSprint() {
     </div>
     <h3 class="word"></h3>
     <h4 class="translate"></h4>
+    <div class="answer-check">🗸</div>
     <button id="false"><span class="arrow">⟵</span> Неверно</button>
     <button id="true">Верно <span class="arrow">⟶</span></button></div>
   </div>

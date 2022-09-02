@@ -6,6 +6,8 @@ $good-color: rgb(28, 160, 34);
 $bad-color: rgb(160, 25, 25);
 $non-active: rgb(93, 94, 95);
 
+$transition-active: $transition-hover;
+
 .sprint {
   display: flex;
   flex-direction: column;
@@ -94,12 +96,32 @@ $non-active: rgb(93, 94, 95);
       border-radius: 15px;
       margin: 5px;
       background-color: $non-active;
+      transition: $transition-active;
 
       &.active {
         background-color: $good-color;
+        transition: $transition-active;
       }
     }
         
+  }
+
+  .answer-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: $non-active;
+    margin: 20px auto;
+    color: white;
+    transition: $transition-active;
+
+    &.active {
+      background-color: $good-color;
+      transition: $transition-active;
+    }
   }
 
   h3 {
@@ -113,14 +135,14 @@ $non-active: rgb(93, 94, 95);
 
   button {
     margin:5px 0;    
-    padding: 12px 42px;
+    padding: 12px 22px;
     border: 2px solid $colorActive;
     border-radius: 100px;
     font-size: 17px;
     line-height: 130%;
     letter-spacing: 0.06em;
     color: $colorText;
-    transition:0.25s;
+    transition: $transition-hover;
     min-width: 175px;
 
     &:hover {
@@ -134,12 +156,17 @@ $non-active: rgb(93, 94, 95);
     border: 2px solid;
     border-radius: 20px;
     border-color: transparent;
+    transition: $transition-active;    
 
     &.good_answer {
       border-color: $good-color;
+      transition: $transition-active;      
+      box-shadow: $good-color 0px 20px 30px -10px;
     }
     &.bad_answer {
       border-color: $bad-color;
+      transition: $transition-active;
+      box-shadow: $bad-color 0px 20px 30px -10px;
     }
   }
 

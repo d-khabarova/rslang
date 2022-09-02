@@ -89,6 +89,7 @@ class Sprint {
     this.trueTranslate = word.wordTranslate;
     this.randomTranslate = randomWord.wordTranslate;
     elem('.sprint-play .card').classList.remove('bad_answer', 'good_answer');
+    elem('.answer-check').classList.remove('active');
     elem('.word').textContent = word.word;
     elem('.translate').textContent = this.randomTranslate;
   }

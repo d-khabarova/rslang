@@ -18,6 +18,7 @@ export function goodAnswer(id: string) {
   const indicators = document.querySelectorAll('.indicator');
   correctSound.play();
   elem('.sprint-play .card').classList.add('good_answer');
+  elem('.answer-check').classList.add('active');
   counterTrueAnswer += 1;
   switch (counterTrueAnswer % 4) {
     case 0:
@@ -68,6 +69,7 @@ export async function finish() {
   elem('.stat').classList.remove('none-view');
   elem('.sprint-play').classList.add('none-view');
   elem('.score_total').innerHTML = elem('.score').innerHTML;
+  elem('.answer-check').classList.remove('active');
   audioHandler();
 }
 
