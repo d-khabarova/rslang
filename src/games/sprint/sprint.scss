@@ -2,6 +2,9 @@
 
 $bg-sprint: rgb(207, 228, 247);
 $score-color: $colorActive;
+$good-color: rgb(28, 160, 34);
+$bad-color: rgb(160, 25, 25);
+$non-active: rgb(93, 94, 95);
 
 .sprint {
   display: flex;
@@ -70,6 +73,25 @@ $score-color: $colorActive;
   .counter_score {
     margin: 10px 0;
   }
+
+  .indicators {
+    display: flex;
+    justify-content: center;
+
+    .indicator {
+      width: 15px;
+      height: 15px;
+      border-radius: 15px;
+      margin: 5px;
+      background-color: $non-active;
+
+      &.active {
+        background-color: $good-color;
+      }
+    }
+        
+  }
+
   h3 {
     font-size: 30px;
     margin-bottom: 10px;
@@ -97,14 +119,42 @@ $score-color: $colorActive;
       cursor: pointer;
     }
   }    
+  .card {
+    padding: 30px;
+    border: 2px solid;
+    border-radius: 20px;
+    border-color: transparent;
+
+    &.good_answer {
+      border-color: $good-color;
+    }
+    &.bad_answer {
+      border-color: $bad-color;
+    }
+  }
+
 }
 
 .stat {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 50px 0 0 0;
+  margin: 50px auto;
+  text-align: left;
 
+  h2 {
+    color: $colorActive;
+    text-align: center;
+  }
+  .good_title {
+    color: $good-color;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  .bad_title {
+    color: $bad-color;
+    font-weight: bold;
+    margin: 10px 0;
+  }
 }
 
 .none-view {

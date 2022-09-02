@@ -23,15 +23,21 @@ export default function renderSprint() {
     <div class="score_block">
       <p class="score">0</p>
     </div>
+    <div class="indicators">
+      <div class="indicator"></div>
+      <div class="indicator"></div>
+      <div class="indicator"></div>
+    </div>
     <div class="counter_score">
-      <p>+ <span class="counter">10</span> очков за слово</p>
+      <p>+ <span class="score_plus">10</span> очков за слово</p>
     </div>
     <h3 class="word"></h3>
     <h4 class="translate"></h4>
-    <button id="false">Неверно</button>
-    <button id="true">Верно</button></div>
+    <button id="false"><span class="arrow">⟵</span> Неверно</button>
+    <button id="true">Верно <span class="arrow">⟶</span></button></div>
   </div>
   <div class="stat none-view">
+    <h2>Ваш результат: <span class="score_total">0</span> очков</h2>
     <div class="good_title">Верно: <span class="good_count"></span></div>
     <div class="good_stat"></div>
     <div class="bad_title">Неверно: <span class="bad_count"></span></div>

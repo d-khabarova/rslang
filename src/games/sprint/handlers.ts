@@ -32,11 +32,17 @@ function hideSprint() {
   elem('.word').innerHTML = '';
   elem('.translate').innerHTML = '';
   elem('.score').innerHTML = '0';
-  elem('.counter').innerHTML = '10';
+  elem('.score_plus').innerHTML = '10';
   elem('.good_count').innerHTML = '';
   elem('.bad_count').innerHTML = '';
   elem('.good_stat').innerHTML = '';
   elem('.bad_stat').innerHTML = '';
+  elem('.score_total').innerHTML = '';
+  const indicators = document.querySelectorAll('.indicator');
+  indicators.forEach((indicator) => {
+    indicator.classList.remove('active');
+  });
+  sprint.stopPlay();
 }
 
 export default function sprintBtnHandlers() {
@@ -44,5 +50,6 @@ export default function sprintBtnHandlers() {
   elem('.card-sprint').addEventListener('click', showSprint);
   btn('#true').addEventListener('click', sprint.answerHandler.bind(sprint));
   btn('#false').addEventListener('click', sprint.answerHandler.bind(sprint));
+  document.addEventListener('keyup', sprint.answerHandler.bind(sprint));
   btn('.btn-exit-sprint').addEventListener('click', hideSprint);
 }

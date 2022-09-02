@@ -1,8 +1,10 @@
 import getStatistic from './statistics';
 import { elem } from '../../utils/querySelectors';
+import fanfar from '../../assets/sounds/fanfar.mp3';
+import incorrect from '../../assets/sounds/incorrect.mp3';
 
-export const goodIds: Array<string> = [];
-export const badIds: Array<string> = [];
+let goodIds: Array<string> = [];
+let badIds: Array<string> = [];
 let counterTrueAnswer = 0;
 
 export function getRandomId(arr: Array<string>) {
@@ -10,17 +12,49 @@ export function getRandomId(arr: Array<string>) {
 }
 
 export function goodAnswer(id: string) {
-  const score = document.querySelector('.counter') as HTMLElement;
-  const scoreTotal = document.querySelector('.score') as HTMLElement;
+  const scorePlus = elem('.score_plus');
+  const scoreSum = elem('.score');
+  const correctSound = new Audio(fanfar);
+  const indicators = document.querySelectorAll('.indicator');
+  correctSound.play();
+  elem('.sprint-play .card').classList.add('good_answer');
   counterTrueAnswer += 1;
-  scoreTotal.innerHTML = (Number(score.innerHTML) + Number(scoreTotal.innerHTML)).toString();
+  switch (counterTrueAnswer % 4) {
+    case 0:
+      scorePlus.innerHTML = (Number(scorePlus.innerHTML) * 2).toString();
+      indicators.forEach((indicator) => {
+        indicator.classList.remove('active');
+      });
+      break;
+    case 1:
+      indicators[0].classList.add('active');
+      break;
+    case 2:
+      indicators[1].classList.add('active');
+      break;
+    case 3:
+      indicators[2].classList.add('active');
+      break;
+    default:
+      indicators.forEach((indicator) => {
+        indicator.classList.remove('active');
+      });
+  }
+  scoreSum.innerHTML = (Number(scorePlus.innerHTML) + Number(scoreSum.innerHTML)).toString();
   goodIds.push(id);
 }
 
 export function badAnswer(id: string) {
-  const score = document.querySelector('.counter') as HTMLElement;
+  const scorePlus = elem('.score_plus');
+  const indicators = document.querySelectorAll('.indicator');
+  const errorSound = new Audio(incorrect);
+  errorSound.play();
+  elem('.sprint-play .card').classList.add('bad_answer');
+  indicators.forEach((indicator) => {
+    indicator.classList.remove('active');
+  });
   counterTrueAnswer = 0;
-  score.innerHTML = '10';
+  scorePlus.innerHTML = '10';
   badIds.push(id);
 }
 
@@ -33,4 +67,11 @@ export async function finish() {
   elem('.bad_stat').innerHTML = dataBadStat;
   elem('.stat').classList.remove('none-view');
   elem('.sprint-play').classList.add('none-view');
+  elem('.score_total').innerHTML = elem('.score').innerHTML;
+}
+
+export function clearStat() {
+  goodIds = [];
+  badIds = [];
+  counterTrueAnswer = 0;
 }
