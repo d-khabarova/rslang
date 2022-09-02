@@ -1,5 +1,5 @@
 import { btn, elem } from '../../utils/querySelectors';
-import audiocall from './audiocallObjs';
+import audiocall from './variables/audiocallObjs';
 
 export default function exit() {
   elem('.header').classList.remove('none-view');

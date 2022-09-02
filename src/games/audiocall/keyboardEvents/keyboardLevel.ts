@@ -1,4 +1,4 @@
-import audiocall from '../audiocallObjs';
+import audiocall from '../variables/audiocallObjs';
 import startAudioCall from '../startAudioCall';
 import callGenerator from '../callGenerator';
 import { elem } from '../../../utils/querySelectors';

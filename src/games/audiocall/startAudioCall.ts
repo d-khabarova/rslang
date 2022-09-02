@@ -1,4 +1,4 @@
-import { getRandomInt } from '../../utils/random';
+import getRandomInt from './random/integers';
 import API from '../../Api/api';
 import { IApiGetWords } from '../../types/apiTypes';
 

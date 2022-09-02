@@ -7,7 +7,7 @@ import keyboardAnswer from './keyboardEvents/keyboardAnswer';
 import keyboardEnter from './keyboardEvents/keyboardEnter';
 import openMenu from './audiocallMenuOpen';
 import exit from './audiocallExit';
-import audiocall from './audiocallObjs';
+import audiocall from './variables/audiocallObjs';
 
 export default function audioCall(): void {
   renderAudiocall();

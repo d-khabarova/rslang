@@ -1,12 +1,12 @@
-import { getRandomGameWords } from '../../utils/random';
+import genRandomGameWords from './random/gameWords';
 import { elem, btn } from '../../utils/querySelectors';
 import iteration from './iteration';
-import { gameSteps } from './consts';
-import audiocall from './audiocallObjs';
+import { gameSteps } from './variables/consts';
+import audiocall from './variables/audiocallObjs';
 
 export default async function callGenerator() {
-  audiocall.gameWords = getRandomGameWords(audiocall.page!);
-  await iteration(audiocall.page!);
+  genRandomGameWords();
+  await iteration();
   btn('.next-btn').onclick = async () => {
     if (audiocall.gameStep === gameSteps && btn('.next-btn').innerHTML === 'НЕ ЗНАЮ') {
       alert('the game is over');
@@ -32,7 +32,7 @@ export default async function callGenerator() {
     if (btn('.next-btn').innerHTML === 'НЕ ЗНАЮ' && audiocall.gameStep < gameSteps) {
       audiocall.gameStep += 1;
       elem('.answers-audiocall').innerHTML = '';
-      await iteration(audiocall.page!);
+      await iteration();
     } else {
       elem('.answerImage').remove();
       btn('.btn-audio').classList.remove('small');
@@ -41,7 +41,7 @@ export default async function callGenerator() {
       btn('.next-btn').classList.remove('big');
       elem('.answers-audiocall').innerHTML = '';
       audiocall.gameStep += 1;
-      await iteration(audiocall.page!);
+      await iteration();
     }
   };
 }

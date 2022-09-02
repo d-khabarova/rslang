@@ -1,5 +1,5 @@
-import audiocall from '../audiocallObjs';
-import { gameSteps } from '../consts';
+import audiocall from '../variables/audiocallObjs';
+import { gameSteps } from '../variables/consts';
 import { elem, btn } from '../../../utils/querySelectors';
 import iteration from '../iteration';
 
@@ -29,7 +29,7 @@ export default async function keyboardEnter(keyboardEvt: KeyboardEvent) {
     if (btn('.next-btn').innerHTML === 'НЕ ЗНАЮ' && audiocall.gameStep < gameSteps) {
       audiocall.gameStep += 1;
       elem('.answers-audiocall').innerHTML = '';
-      await iteration(audiocall.page!);
+      await iteration();
     } else if (btn('.next-btn').innerHTML === '⟶' && audiocall.gameStep < gameSteps) {
       elem('.answerImage').remove();
       btn('.btn-audio').classList.remove('small');
@@ -38,7 +38,7 @@ export default async function keyboardEnter(keyboardEvt: KeyboardEvent) {
       btn('.next-btn').classList.remove('big');
       elem('.answers-audiocall').innerHTML = '';
       audiocall.gameStep += 1;
-      await iteration(audiocall.page!);
+      await iteration();
     }
   }
 }
