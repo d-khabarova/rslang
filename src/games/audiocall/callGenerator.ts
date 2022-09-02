@@ -3,6 +3,7 @@ import { elem, btn } from '../../utils/querySelectors';
 import iteration from './iteration';
 import { gameSteps } from './variables/consts';
 import audiocall from './variables/audiocallObjs';
+import checkAnswer from './checkAnswer';
 
 export default async function callGenerator() {
   genRandomGameWords();
@@ -30,9 +31,7 @@ export default async function callGenerator() {
       return;
     }
     if (btn('.next-btn').innerHTML === 'НЕ ЗНАЮ' && audiocall.gameStep < gameSteps) {
-      audiocall.gameStep += 1;
-      elem('.answers-audiocall').innerHTML = '';
-      await iteration();
+      checkAnswer();
     } else {
       elem('.answerImage').remove();
       btn('.btn-audio').classList.remove('small');

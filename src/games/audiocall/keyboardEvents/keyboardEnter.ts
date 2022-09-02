@@ -2,6 +2,7 @@ import audiocall from '../variables/audiocallObjs';
 import { gameSteps } from '../variables/consts';
 import { elem, btn } from '../../../utils/querySelectors';
 import iteration from '../iteration';
+import checkAnswer from '../checkAnswer';
 
 export default async function keyboardEnter(keyboardEvt: KeyboardEvent) {
   if (!document.querySelector('.gameplay-audiocall.none-view') && keyboardEvt.key === 'Enter') {
@@ -27,9 +28,7 @@ export default async function keyboardEnter(keyboardEvt: KeyboardEvent) {
       return;
     }
     if (btn('.next-btn').innerHTML === 'НЕ ЗНАЮ' && audiocall.gameStep < gameSteps) {
-      audiocall.gameStep += 1;
-      elem('.answers-audiocall').innerHTML = '';
-      await iteration();
+      checkAnswer();
     } else if (btn('.next-btn').innerHTML === '⟶' && audiocall.gameStep < gameSteps) {
       elem('.answerImage').remove();
       btn('.btn-audio').classList.remove('small');

@@ -28,7 +28,7 @@ export default function renderAudiocall() {
     <div class="answers-audiocall"></div>
     <button class="next-btn">НЕ ЗНАЮ</button>
   </div>
-  <div class="audiocall-result none-view">
+  <div class="audiocall-result hidden">
   <h3>Результат</h3>
     <div class="audiocall-mistakes">
       <div>Ошибки: <span>0</span></div>

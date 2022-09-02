@@ -4,8 +4,8 @@ import {
   loopStart, loopStep, answersNumber, numberingDifference,
 } from './variables/consts';
 import { base } from '../../Api/apiConstants';
-import incorrect from '../../assets/sounds/incorrect.mp3';
-import getAnswer from './getAnswer';
+// import incorrect from '../../assets/sounds/incorrect.mp3';
+// import getAnswer from './getAnswer';
 import checkAnswer from './checkAnswer';
 import { elementCreator } from '../../utils/elementsCreator';
 import audiocall from './variables/audiocallObjs';
@@ -32,22 +32,25 @@ export default async function iteration() {
       'click',
       (evt: MouseEvent) => {
         const htmlButtonElement = evt.target as HTMLButtonElement;
-        checkAnswer(htmlButtonElement);
+        if (checkAnswer(htmlButtonElement)) {
+          const firstSign = new RegExp(`${htmlButtonElement.innerHTML[0]}`);
+          htmlButtonElement.innerHTML = htmlButtonElement.innerHTML.replace(firstSign, '✔');
+        }
       },
       { once: true },
     );
   });
-  btns('.var').forEach((b) => {
-    b.addEventListener(
-      'click',
-      (evt: MouseEvent) => {
-        const htmlButtonElement = evt.target as HTMLButtonElement;
-        const variant: string = htmlButtonElement.innerHTML.slice(2);
-        if (variant !== getAnswer(audiocall.gameWords.words).wordTranslate) {
-          const errorSound = new Audio(incorrect);
-          errorSound.play();
-        }
-      },
-    );
-  });
+  // btns('.var').forEach((b) => {
+  //   b.addEventListener(
+  //     'click',
+  //     (evt: MouseEvent) => {
+  //       const htmlButtonElement = evt.target as HTMLButtonElement;
+  //       const variant: string = htmlButtonElement.innerHTML.slice(2);
+  //       if (variant !== getAnswer(audiocall.gameWords.words).wordTranslate) {
+  //         const errorSound = new Audio(incorrect);
+  //         errorSound.play();
+  //       }
+  //     },
+  //   );
+  // });
 }

@@ -15,10 +15,7 @@ function getIncorrectNumbers(max: number): number[] {
   return numbers;
 }
 
-export default function getTranslations(
-  answer: string,
-  answerPos: number,
-): string[] {
+export default function getTranslations(answer: string, answerPos: number): string[] {
   const translations: string[] = [];
   const answerPosAmongOthers = getRandomInt(answersNumber);
   const numbers = getIncorrectNumbers(wordsPerPage);
