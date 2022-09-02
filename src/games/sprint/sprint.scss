@@ -65,6 +65,16 @@ $non-active: rgb(93, 94, 95);
   margin: 50px 0 0 0;
   text-align: center;
 
+  .timer {
+    min-width: 60px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 48px;
+    border-radius: 50%;
+    border: 2px solid;
+    padding: 15px;
+  }
+
   .score_block {
     font-size: 40px;
     color: $score-color;
@@ -154,6 +164,32 @@ $non-active: rgb(93, 94, 95);
     color: $bad-color;
     font-weight: bold;
     margin: 10px 0;
+  }
+
+  .btn-audio {
+    background-image: url(/src/assets/svg/icon-audio.svg);
+    background-size: 17px;
+    background-position: center;
+    background-repeat: no-repeat;    
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    vertical-align: middle;
+    margin: 5px;
+  }
+
+  .good_stat {
+    .btn-audio {
+      background-color: $good-color;
+    }
+  }
+
+  .bad_stat {
+    .btn-audio {
+      background-color: $bad-color;
+    }
   }
 }
 

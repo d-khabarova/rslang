@@ -1,9 +1,10 @@
 import API from '../../Api/api';
 import { ApiGetWords } from '../../types/apiTypes';
 import {
-  getRandomId, goodAnswer, badAnswer, finish, clearStat,
+  getRandomId, goodAnswer, badAnswer, clearStat,
 } from './functions';
 import { elem } from '../../utils/querySelectors';
+import timer from './timer';
 
 class Sprint {
   api: API;
@@ -36,6 +37,7 @@ class Sprint {
     this.page = this.getRandomPage();
     this.words = await this.api.getWordsSprint(this.group, this.page);
     this.startPlay(this.words);
+    timer();
   }
 
   getRandomPage() {
@@ -97,13 +99,9 @@ class Sprint {
     } else {
       badAnswer(this.ids[this.i]);
     }
-    //  if (this.i <= this.ids.length - 2) {
-    if (this.i <= 10) {
+    if (this.i <= this.ids.length - 2) {
       this.i += 1;
     } else {
-      finish();
-      this.i = 0;
-      return;
       this.pages.push(this.page);
       this.page = this.getRandomPage();
       this.words = await this.api.getWordsSprint(this.group, this.page);

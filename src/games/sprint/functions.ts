@@ -1,4 +1,4 @@
-import getStatistic from './statistics';
+import { getStatistic, audioHandler } from './statistics';
 import { elem } from '../../utils/querySelectors';
 import fanfar from '../../assets/sounds/fanfar.mp3';
 import incorrect from '../../assets/sounds/incorrect.mp3';
@@ -68,6 +68,7 @@ export async function finish() {
   elem('.stat').classList.remove('none-view');
   elem('.sprint-play').classList.add('none-view');
   elem('.score_total').innerHTML = elem('.score').innerHTML;
+  audioHandler();
 }
 
 export function clearStat() {
