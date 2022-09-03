@@ -57,9 +57,11 @@ class Sprint {
       switch (e.code) {
         case 'ArrowRight':
           answerType = 'true';
+          elem('#true').classList.add('hover');
           break;
         case 'ArrowLeft':
           answerType = 'false';
+          elem('#false').classList.add('hover');
           break;
         default:
           return;
@@ -79,6 +81,8 @@ class Sprint {
     this.randomTranslate = randomWord.wordTranslate;
     elem('.sprint-play .card').classList.remove('bad_answer', 'good_answer');
     elem('.answer-check').classList.remove('active');
+    elem('#true').classList.remove('hover');
+    elem('#false').classList.remove('hover');
     elem('.word').textContent = word.word;
     elem('.translate').textContent = this.randomTranslate;
   }

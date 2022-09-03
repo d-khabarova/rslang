@@ -149,7 +149,7 @@ $transition-active: $transition-hover;
     &#false {
       border: 2px solid $bad-color;
 
-      &:hover {
+      &:hover, &.hover {
         background: $bad-color;
       }
     }
@@ -157,7 +157,7 @@ $transition-active: $transition-hover;
     &#true {
       border: 2px solid $good-color;
 
-      &:hover {
+      &:hover, &.hover {
         background: $good-color;
       }
     }
@@ -166,7 +166,7 @@ $transition-active: $transition-hover;
       outline: none;
     }
 
-    &:hover {      
+    &:hover, &.hover {      
       color: $colorTextBtn;
       cursor: pointer;
     }
