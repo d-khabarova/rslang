@@ -68,13 +68,15 @@ $transition-active: $transition-hover;
   text-align: center;
 
   .timer {
-    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
     margin-bottom: 15px;
-    text-align: center;
     font-size: 48px;
     border-radius: 50%;
     border: 2px solid;
-    padding: 15px;
   }
 
   .score_block {
