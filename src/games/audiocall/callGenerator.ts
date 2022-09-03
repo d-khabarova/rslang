@@ -10,7 +10,9 @@ export default async function callGenerator() {
   genRandomGameWords();
   await iteration();
   btn('.next-btn').onclick = async () => {
-    if (audiocall.gameStep === gameSteps && btn('.next-btn').innerHTML === '⟶') {
+    if (btn('.next-btn').innerHTML === 'НЕ ЗНАЮ') {
+      checkAnswer();
+    } else if (audiocall.gameStep === gameSteps) {
       await showResult();
       elem('.audiocall-result').classList.remove('none-view');
       elem('.gameplay-audiocall').classList.add('none-view');
@@ -21,10 +23,6 @@ export default async function callGenerator() {
       elem('.answer').innerHTML = '';
       btn('.next-btn').innerHTML = 'НЕ ЗНАЮ';
       btn('.next-btn').classList.remove('big');
-      return;
-    }
-    if (btn('.next-btn').innerHTML === 'НЕ ЗНАЮ' && audiocall.gameStep <= gameSteps) {
-      checkAnswer();
     } else {
       elem('.answerImage').remove();
       btn('.btn-audio').classList.remove('small');

@@ -33,10 +33,10 @@ export function renderMainPage() {
           <p class="benefit__card-title">Учебник</p>
           <button class="button">Попробовать</button>
         </div>
-        <div class="benefit__card">
+        <div class="benefit__card card_audiocall">
           <img src="./assets/child7.png" alt="child2">
           <p class="benefit__card-title">Аудиовызов</p>
-          <button class="button card_audiocall">Попробовать</button>
+          <button class="button">Попробовать</button>
         </div>
         <div class="benefit__card">
           <img src="./assets/child6.png" alt="child3">

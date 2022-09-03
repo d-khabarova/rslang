@@ -17,16 +17,16 @@ export default function audioCall(): void {
   document.addEventListener('keydown', keyboardEnter);
   leaveResult();
   btn('.nav_audiocall').addEventListener('click', openMenu);
-  btn('.card_audiocall').addEventListener('click', openMenu);
+  elem('.card_audiocall').addEventListener('click', openMenu);
   btn('.btn-exit').addEventListener('click', exit);
   btns('.start-audiocall').forEach((b) => {
     b.addEventListener('click', async (evt: MouseEvent) => {
       const htmlButtonElement = evt.target as HTMLButtonElement;
       const level: number = +htmlButtonElement.innerHTML;
       audiocall.page = await startAudioCall(level);
-      await callGenerator();
       elem('.game-menu').classList.add('none-view');
       elem('.gameplay-audiocall').classList.remove('none-view');
+      await callGenerator();
     });
   });
 }
