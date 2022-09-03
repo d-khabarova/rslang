@@ -138,7 +138,6 @@ $transition-active: $transition-hover;
   button {
     margin:5px 0;    
     padding: 12px 22px;
-    border: 2px solid $colorActive;
     border-radius: 100px;
     font-size: 17px;
     line-height: 130%;
@@ -147,8 +146,27 @@ $transition-active: $transition-hover;
     transition: $transition-hover;
     min-width: 175px;
 
-    &:hover {
-      background: $colorActive;
+    &#false {
+      border: 2px solid $bad-color;
+
+      &:hover {
+        background: $bad-color;
+      }
+    }
+
+    &#true {
+      border: 2px solid $good-color;
+
+      &:hover {
+        background: $good-color;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {      
       color: $colorTextBtn;
       cursor: pointer;
     }
