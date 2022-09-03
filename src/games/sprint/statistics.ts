@@ -1,5 +1,4 @@
 import API from '../../Api/api';
-import { base } from '../../Api/apiConstants';
 
 const api = new API();
 
@@ -13,7 +12,7 @@ function renderStat(audio: string, word: string, transcription:string, wordTrans
 }
 
 function playWords(audio: string) {
-  const audioPath = `${base}/${audio}`;
+  const audioPath = `${api.base}/${audio}`;
   const prononc = new Audio(audioPath);
   prononc.play();
 }
