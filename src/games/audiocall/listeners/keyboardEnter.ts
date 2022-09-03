@@ -3,23 +3,20 @@ import { gameSteps } from '../variables/consts';
 import { elem, btn } from '../../../utils/querySelectors';
 import iteration from '../iteration';
 import checkAnswer from '../checkAnswer';
+import showResult from '../result/showResult';
 
 export default async function keyboardEnter(keyboardEvt: KeyboardEvent) {
   if (!document.querySelector('.gameplay-audiocall.none-view') && keyboardEvt.key === 'Enter') {
-    if (audiocall.gameStep === gameSteps && btn('.next-btn').innerHTML === 'НЕ ЗНАЮ') {
-      alert('the game is over');
-      elem('.game-menu').classList.remove('none-view');
-      elem('.gameplay-audiocall').classList.add('none-view');
-      elem('.answers-audiocall').innerHTML = '';
-      audiocall.gameStep = 0;
-      return;
-    }
+    keyboardEvt.preventDefault();
     if (audiocall.gameStep === gameSteps && btn('.next-btn').innerHTML === '⟶') {
-      alert('the game is over');
-      elem('.game-menu').classList.remove('none-view');
+      showResult();
+      elem('.audiocall-result').classList.remove('none-view');
       elem('.gameplay-audiocall').classList.add('none-view');
+      elem('.exit').classList.add('none-view');
       elem('.answers-audiocall').innerHTML = '';
       audiocall.gameStep = 0;
+      audiocall.knownNum = 0;
+      audiocall.mistakesNum = 0;
       elem('.answerImage').remove();
       btn('.btn-audio').classList.remove('small');
       elem('.answer').innerHTML = '';
@@ -27,7 +24,7 @@ export default async function keyboardEnter(keyboardEvt: KeyboardEvent) {
       btn('.next-btn').classList.remove('big');
       return;
     }
-    if (btn('.next-btn').innerHTML === 'НЕ ЗНАЮ' && audiocall.gameStep < gameSteps) {
+    if (btn('.next-btn').innerHTML === 'НЕ ЗНАЮ' && audiocall.gameStep <= gameSteps) {
       checkAnswer();
     } else if (btn('.next-btn').innerHTML === '⟶' && audiocall.gameStep < gameSteps) {
       elem('.answerImage').remove();

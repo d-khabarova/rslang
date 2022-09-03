@@ -28,15 +28,19 @@ export default function renderAudiocall() {
     <div class="answers-audiocall"></div>
     <button class="next-btn">НЕ ЗНАЮ</button>
   </div>
-  <div class="audiocall-result hidden">
-  <h3>Результат</h3>
-    <div class="audiocall-mistakes">
-      <div>Ошибки: <span>0</span></div>
+  <div class="audiocall-result none-view">
+    <h3>Результат</h3>
+    <div>
+      <div>Ошибки: <span class="audiocall-mistakes">0</span></div>
     </div>
-    <div class="audiocall-known">
-      <div>Знаю: <span>0</span></div>
+    <div>
+      <div>Знаю: <span class="audiocall-known">0</span></div>
     </div>
-</div>
+    <div>
+      <button class="continue">Продолжить тренировку</button>
+      <button class="to-main">На главную страницу</button>
+    </div>
+  </div>
 </section>
 `;
   const main = elem('body') as HTMLElement;

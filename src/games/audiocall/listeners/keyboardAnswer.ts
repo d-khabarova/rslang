@@ -1,14 +1,16 @@
 import audiocall from '../variables/audiocallObjs';
-import { btns } from '../../../utils/querySelectors';
+import { elem, btns } from '../../../utils/querySelectors';
 import { numberingDifference } from '../variables/consts';
 import checkAnswer from '../checkAnswer';
 
 async function launchFromKeyboard() {
   const variants = btns('.var');
   const correctButton: HTMLButtonElement = variants[audiocall.answer - numberingDifference];
-  if (checkAnswer(correctButton)) {
-    const firstSign = new RegExp(`${correctButton.innerHTML[0]}`);
-    correctButton.innerHTML = correctButton.innerHTML.replace(firstSign, '✔');
+  if (!elem('.answerImage')) {
+    if (checkAnswer(correctButton)) {
+      const firstSign = new RegExp(`${correctButton.innerHTML[0]}`);
+      correctButton.innerHTML = correctButton.innerHTML.replace(firstSign, '✔');
+    }
   }
 }
 

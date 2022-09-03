@@ -2,18 +2,20 @@ import renderAudiocall from './renderAudiocall';
 import { btn, elem, btns } from '../../utils/querySelectors';
 import startAudioCall from './startAudioCall';
 import callGenerator from './callGenerator';
-import keyboardLevel from './keyboardEvents/keyboardLevel';
-import keyboardAnswer from './keyboardEvents/keyboardAnswer';
-import keyboardEnter from './keyboardEvents/keyboardEnter';
+import keyboardLevel from './listeners/keyboardLevel';
+import keyboardAnswer from './listeners/keyboardAnswer';
+import keyboardEnter from './listeners/keyboardEnter';
 import openMenu from './audiocallMenuOpen';
 import exit from './audiocallExit';
 import audiocall from './variables/audiocallObjs';
+import leaveResult from './result/leaveResult';
 
 export default function audioCall(): void {
   renderAudiocall();
   document.addEventListener('keydown', keyboardLevel);
   document.addEventListener('keydown', keyboardAnswer);
   document.addEventListener('keydown', keyboardEnter);
+  leaveResult();
   btn('.nav_audiocall').addEventListener('click', openMenu);
   btn('.card_audiocall').addEventListener('click', openMenu);
   btn('.btn-exit').addEventListener('click', exit);
