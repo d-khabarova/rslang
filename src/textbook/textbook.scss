@@ -25,7 +25,7 @@
       height: 100%;
       padding: 5px 10px;
       background-color: $colorSelect;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       color: $colorTextSelect;
       border-radius: 4px;
       border-color: transparent;
@@ -55,14 +55,14 @@
       .page-num {
         width: 40px;
         height: 100%;
-        font-size: 2rem;
+        font-size: 1.5rem;
         text-align: center;
       }
     }
     
     .sprint-btn,
     .audioCall-btn {
-      width: 190px;
+      width: 170px;
     }
   }
 
@@ -94,7 +94,6 @@
   .wordItem {
     margin: 10px;
     padding: 10px;
-    min-width: 1000px;
     min-height: 200px;
     display: flex;
     column-gap: 20px;
@@ -103,7 +102,7 @@
     box-shadow: 0px 0px 20px -1px rgba(34, 60, 80, 0.27);
 
     .wordItem__image {
-      width: 300px;
+      width: 100%;
       background-position: center;
       background-size: cover;
       border-radius: 5px 0 0 5px;
@@ -135,7 +134,14 @@
 
 @media (max-width: 768px) {
   .wrapper {
-    max-width: 700px;
-    width: 90%;
+    flex-direction: column;
+  }
+
+  .wordItem{
+    flex-direction: column;
+  }
+
+  .wordItem__image {
+    height: 300px;
   }
 }
