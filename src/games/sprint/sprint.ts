@@ -1,5 +1,5 @@
 import API from '../../Api/api';
-import { ApiGetWords } from '../../types/apiTypes';
+import { IApiGetWords } from '../../types/apiTypes';
 import { pages, getRandomId, getRandomPage } from './randoms';
 import { goodAnswer, badAnswer, clearStat } from './functions';
 import { elem } from '../../utils/querySelectors';
@@ -14,7 +14,7 @@ class Sprint {
   randomTranslate: string;
   group: string;
   page: string;
-  words!: Array<ApiGetWords>;
+  words!: Array<IApiGetWords>;
 
   constructor() {
     this.api = new API();
@@ -37,7 +37,7 @@ class Sprint {
     timer();
   }
 
-  startPlay(words: Array<ApiGetWords>) {
+  startPlay(words: Array<IApiGetWords>) {
     words.forEach((word) => {
       this.ids.push(word.id);
     });
@@ -74,9 +74,9 @@ class Sprint {
   }
 
   async renderCard(id: string, randomId: string) {
-    const word: ApiGetWords = await this.api.getWord(id);
+    const word: IApiGetWords = await this.api.getWord(id);
     const randomFromTwoId = getRandomId([id, randomId]);
-    const randomWord: ApiGetWords = await this.api.getWord(randomFromTwoId);
+    const randomWord: IApiGetWords = await this.api.getWord(randomFromTwoId);
     this.trueTranslate = word.wordTranslate;
     this.randomTranslate = randomWord.wordTranslate;
     elem('.sprint-play .card').classList.remove('bad_answer', 'good_answer');

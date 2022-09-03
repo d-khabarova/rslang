@@ -54,13 +54,13 @@ class API {
     };
   }
 
-  async getWordsSprint(group?: string, page?: string) {
+  async getWordsSprint(group: string, page: string) {
     const rawResponse = await fetch(`${this.words}?group=${group}&page=${page}`);
     const content = await rawResponse.json();
     return content;
   }
 
-  async getWord(id?: string) {
+  async getWord(id: string) {
     const rawResponse = await fetch(`${this.words}/${id}`);
     const content = await rawResponse.json();
     return content;
