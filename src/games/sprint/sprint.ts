@@ -1,8 +1,7 @@
 import API from '../../Api/api';
 import { ApiGetWords } from '../../types/apiTypes';
-import {
-  getRandomId, goodAnswer, badAnswer, clearStat,
-} from './functions';
+import { pages, getRandomId, getRandomPage } from './randoms';
+import { goodAnswer, badAnswer, clearStat } from './functions';
 import { elem } from '../../utils/querySelectors';
 import timer from './timer';
 
@@ -16,7 +15,6 @@ class Sprint {
   group: string;
   page: string;
   words!: Array<ApiGetWords>;
-  pages: Array<string>;
 
   constructor() {
     this.api = new API();
@@ -27,25 +25,16 @@ class Sprint {
     this.randomTranslate = '';
     this.group = '';
     this.page = '';
-    this.pages = [];
   }
 
   async start(e: Event) {
     const target = e.target as Element;
     e.preventDefault();
     this.group = target.getAttribute('data-level') as string;
-    this.page = this.getRandomPage();
+    this.page = getRandomPage();
     this.words = await this.api.getWordsSprint(this.group, this.page);
     this.startPlay(this.words);
     timer();
-  }
-
-  getRandomPage() {
-    const page = Math.floor(Math.random() * 30).toString();
-    if (this.pages.includes(page)) {
-      this.getRandomPage();
-    }
-    return page;
   }
 
   startPlay(words: Array<ApiGetWords>) {
@@ -103,8 +92,8 @@ class Sprint {
     if (this.i <= this.ids.length - 2) {
       this.i += 1;
     } else {
-      this.pages.push(this.page);
-      this.page = this.getRandomPage();
+      pages.push(this.page);
+      this.page = getRandomPage();
       this.words = await this.api.getWordsSprint(this.group, this.page);
       this.words.forEach((word) => {
         this.ids.push(word.id);

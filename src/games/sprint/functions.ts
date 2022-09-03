@@ -6,10 +6,7 @@ import incorrect from '../../assets/sounds/incorrect.mp3';
 let goodIds: Array<string> = [];
 let badIds: Array<string> = [];
 let counterTrueAnswer = 0;
-
-export function getRandomId(arr: Array<string>) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+const countForIncrease = 4;
 
 export function goodAnswer(id: string) {
   const scorePlus = elem('.score_plus');
@@ -20,7 +17,7 @@ export function goodAnswer(id: string) {
   elem('.sprint-play .card').classList.add('good_answer');
   elem('.answer-check').classList.add('active');
   counterTrueAnswer += 1;
-  switch (counterTrueAnswer % 4) {
+  switch (counterTrueAnswer % countForIncrease) {
     case 0:
       scorePlus.innerHTML = (Number(scorePlus.innerHTML) * 2).toString();
       indicators.forEach((indicator) => {
