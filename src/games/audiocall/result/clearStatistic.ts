@@ -11,4 +11,5 @@ export default function clearStat() {
   elem('.bad-stat').innerHTML = '';
   elem('.audiocall-result').classList.add('none-view');
   elem('.exit').classList.remove('none-view');
+  elem('.gameplay-audiocall').classList.remove('loaded');
 }
