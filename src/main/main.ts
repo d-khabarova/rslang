@@ -6,7 +6,7 @@ export function renderMainPage() {
     <nav class="menu">
       <ul class="nav_list">
         <li class="nav_item"><a href="#" class="nav_link active">Главная</a></li>
-        <li class="nav_item"><a href="#" class="nav_link">Учебник</a></li>
+        <li class="nav_item"><a href="#" class="nav_link nav_textbook">Учебник</a></li>
         <li class="nav_item"><a href="#" class="nav_link">Аудиовызов</a></li>
         <li class="nav_item"><a href="#" class="nav_link">Спринт</a></li>
         <li class="nav_item"><a href="#" class="nav_link">Статистика</a></li>

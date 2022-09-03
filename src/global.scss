@@ -10,6 +10,7 @@ html {
   font-family: $font-family;
   color: $colorText;
   background-color: $colorBg;
+  scroll-behavior: smooth;
 }
 
 body {

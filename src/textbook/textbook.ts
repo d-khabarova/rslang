@@ -27,18 +27,20 @@ function createWordItem(words: WordContent[]) {
     wordCard += `
     <div class="wordItem" data-id="${word.id}">
       <div class="wordItem__image" style="background-image: url('${base}/${word.image}');"></div>
-      <div class="wordItem__header">
-        <span class="wordItem__word">${word.word}</span>
-        -
-        <span class="wordItem__word-transcription">${word.transcription}</span>
-        -
-        <span class="wordItem__word-translate">${word.wordTranslate}</span>
-        <img class="wordItem__sound-image" src="./assets/volumeUp.svg" alt="volumeUp">
+      <div class="wordItem__content">
+        <div class="wordItem__header">
+          <span class="wordItem__word">${word.word}</span>
+          -
+          <span class="wordItem__word-transcription">${word.transcription}</span>
+          -
+          <span class="wordItem__word-translate">${word.wordTranslate}</span>
+          <img class="wordItem__sound-image" src="./assets/volumeUp.svg" alt="volumeUp">
+        </div>
+        <div class="wordItem__explanation">${word.textMeaning}</div>
+        <div class="wordItem__explanation-translate">${word.textMeaningTranslate}</div>
+        <div class="wordItem__example">${word.textExample}</div>
+        <div class="wordItem__example-translate">${word.textExampleTranslate}</div>
       </div>
-      <div class="wordItem__explanation">${word.textMeaning}</div>
-      <div class="wordItem__explanation-translate">${word.textMeaningTranslate}</div>
-      <div class="wordItem__example">${word.textExample}</div>
-      <div class="wordItem__example-translate">${word.textExampleTranslate}</div>
     </div>
     `;
   });
@@ -49,7 +51,7 @@ function createTextbookPage() {
   const main = document.querySelector('.main') as HTMLElement;
   main.innerHTML = '';
   const content = `
-  <div class="textbook__pages"></div>
+  <div class="textbook__pages">
   <div class="wrapper">
     <div class="textbook__controls">
       <select class="textbook__select" name="group">
@@ -61,9 +63,9 @@ function createTextbookPage() {
         <option value="5">Раздел 6</option>
       </select>
       <div class="page-nav">
-        <div class="prev-page"></div>
+        <button class="prev-page"><i class="fas fa-chevron-left"></i></button>
         <div class="page-num">${textbookState.page + 1}</div>
-        <div class="next-page"></div>
+        <button class="next-page"><i class="fas fa-chevron-right"></i></button>
       </div>
     </div>
     <div class="textbook__controls">
@@ -72,7 +74,7 @@ function createTextbookPage() {
     </div>
   </div>
   <div class="textbook__page"></div>
-  <a class="top-btn" href="#">TOP</a>
+  <a class="top-btn" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM377 271c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-87-87-87 87c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9L239 167c9.4-9.4 24.6-9.4 33.9 0L377 271z"/></svg></a>
   </div>
   `;
   main.innerHTML = content;
@@ -88,15 +90,8 @@ function playAudioWord(words: WordContent[], card: HTMLElement) {
   const wordExample = document.createElement('audio');
   wordExample.src = `${base}/${word.audioExample}`;
 
-  let isPlay = false;
   function playAudio(audioWord: HTMLAudioElement) {
-    if (!isPlay) {
-      audioWord.play();
-      isPlay = true;
-    } else {
-      audioWord.pause();
-      isPlay = false;
-    }
+    audioWord.play();
   }
 
   playAudio(wordAudio);
