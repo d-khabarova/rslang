@@ -15,6 +15,5 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-explicit-any': 2,
     '@typescript-eslint/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
-    // '@typescript-eslint/no-non-null-assertion': 'off',
   },
 };

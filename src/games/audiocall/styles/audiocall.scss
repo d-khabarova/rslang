@@ -1,3 +1,5 @@
+@import '../../../config.scss';
+
 $bg-audiocall: pink;
 $bg-audiocall-card: rgb(42, 112, 165);
 $bg-audioicon: aquamarine;
@@ -6,6 +8,10 @@ $border-example: violet;
 $border-white: white;
 $correct-answer: purple;
 $color-text: black;
+$good-color: rgb(28, 160, 34);
+$bad-color: rgb(160, 25, 25);
+$btn-hover: rgb(212, 161, 200);
+$resultTitle-color: $colorActive;
 
 .audiocall-card {
   width: 200px;
@@ -144,9 +150,71 @@ $color-text: black;
 
 .audiocall-result {
   margin: auto;
-  max-width: 784px;
-  min-height: 646px;
-  border: 1px solid $border-white;
+
+  h2 {
+    color: $resultTitle-color;
+    text-align: center;
+  }
+
+  .good-title {
+    color: $good-color;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+
+  .bad-title {
+    color: $bad-color;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+
+  .btn-audio {
+    background-image: url(/src/assets/svg/icon-audio.svg);
+    background-size: 17px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    vertical-align: middle;
+    margin: 5px;
+  }
+
+  .good-stat {
+    .btn-audio {
+      background-color: $good-color;
+    }
+  }
+
+  .bad-stat {
+    .btn-audio {
+      background-color: $bad-color;
+    }
+  }
+
+  .exit-btns {
+    margin-top: 20px;
+
+    button {
+      padding: 3px 7px;
+      font-size: 18px;
+      text-decoration: none;
+      color: $colorText;
+      transition: $transition-hover;
+      border: 1px solid $colorActive;
+      border-radius: 100px;
+      background-color: inherit;
+      background: none;
+      padding-bottom: 3.5px;
+    }
+
+    button:hover {
+      background: $btn-hover;
+      transition: 0.25s;
+    }
+  }
 }
 
 .big {

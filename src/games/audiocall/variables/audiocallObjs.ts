@@ -7,6 +7,8 @@ interface IObj {
   gameStep: number,
   mistakesNum: number,
   knownNum: number,
+  goodIds: Array<string>,
+  badIds: Array<string>,
   page: IApiGetWords[],
   gameWords: IgameWords,
 }
@@ -17,6 +19,8 @@ const audiocall: IObj = {
   gameStep: 0,
   mistakesNum: 0,
   knownNum: 0,
+  goodIds: [],
+  badIds: [],
   page: [],
   gameWords: {
     words: [],

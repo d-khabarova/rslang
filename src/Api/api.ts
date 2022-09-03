@@ -53,5 +53,11 @@ class API {
       wordsPage: result,
     };
   }
+
+  async getWord(id?: string) {
+    const rawResponse = await fetch(`${this.words}/${id}`);
+    const content = await rawResponse.json();
+    return content;
+  }
 }
 export default API;

@@ -26,15 +26,18 @@ export default function checkAnswer(htmlButtonElement?: HTMLButtonElement): bool
       const correctSound = new Audio(fanfar);
       correctSound.play();
       htmlButtonElement.classList.add('correct');
+      audiocall.goodIds.push(audiocall.gameWords.words[audiocall.gameStep].id);
       audiocall.knownNum += 1;
       return true;
     }
     htmlButtonElement.classList.add('incorrect');
     new Audio(incorrect).play();
+    audiocall.badIds.push(audiocall.gameWords.words[audiocall.gameStep].id);
     audiocall.mistakesNum += 1;
     return false;
   }
   new Audio(incorrect).play();
+  audiocall.badIds.push(audiocall.gameWords.words[audiocall.gameStep].id);
   audiocall.mistakesNum += 1;
   return false;
 }

@@ -11,14 +11,11 @@ export default async function callGenerator() {
   await iteration();
   btn('.next-btn').onclick = async () => {
     if (audiocall.gameStep === gameSteps && btn('.next-btn').innerHTML === '⟶') {
-      showResult();
+      await showResult();
       elem('.audiocall-result').classList.remove('none-view');
       elem('.gameplay-audiocall').classList.add('none-view');
       elem('.exit').classList.add('none-view');
       elem('.answers-audiocall').innerHTML = '';
-      audiocall.gameStep = 0;
-      audiocall.knownNum = 0;
-      audiocall.mistakesNum = 0;
       elem('.answerImage').remove();
       btn('.btn-audio').classList.remove('small');
       elem('.answer').innerHTML = '';
