@@ -37,6 +37,7 @@ class Auth {
     buttons.forEach((button) => {
       button.addEventListener('click', async (e) => {
         e.preventDefault();
+        document.body.classList.remove('loaded');
         const mail: string = (authForm.querySelector('input[type=email]') as HTMLInputElement).value;
         const pass: string = (authForm.querySelector('input[type=password]') as HTMLInputElement).value;
         if (validateEmail(mail) && validatePassword(pass)) {
@@ -48,6 +49,7 @@ class Auth {
           this.storage.parseToLocalStorage(content);
           renderLogOutBnt();
         }
+        document.body.classList.add('loaded');
       });
     });
   }
