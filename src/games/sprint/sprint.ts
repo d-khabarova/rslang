@@ -30,19 +30,20 @@ class Sprint {
   async start(e: Event) {
     const target = e.target as Element;
     e.preventDefault();
+    document.body.classList.remove('loaded');
     this.group = target.getAttribute('data-level') as string;
     this.page = getRandomPage();
     this.words = await this.api.getWordsSprint(this.group, this.page);
     this.startPlay(this.words);
-    timer();
   }
 
-  startPlay(words: Array<IApiGetWords>) {
+  async startPlay(words: Array<IApiGetWords>) {
     words.forEach((word) => {
       this.ids.push(word.id);
     });
     this.randomId = getRandomId(this.ids);
-    this.renderCard(this.ids[this.i], this.randomId);
+    await this.renderCard(this.ids[this.i], this.randomId);
+    timer();
   }
 
   stopPlay() {
@@ -86,6 +87,7 @@ class Sprint {
     elem('#false').classList.remove('hover');
     elem('.word').textContent = word.word;
     elem('.translate').textContent = this.randomTranslate;
+    document.body.classList.add('loaded');
   }
 
   async checkAnswer(button_id: string) {
