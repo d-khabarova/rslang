@@ -61,6 +61,8 @@ export function badAnswer(id: string) {
 }
 
 export async function finish() {
+  elem('.sprint-play').classList.add('none-view');
+  document.body.classList.remove('loaded');
   const dataGoodStat = await getStatistic(goodIds);
   const dataBadStat = await getStatistic(badIds);
   elem('.good_count').innerHTML = `${goodIds.length}`;
@@ -68,11 +70,11 @@ export async function finish() {
   elem('.bad_count').innerHTML = `${badIds.length}`;
   elem('.bad_stat').innerHTML = dataBadStat;
   elem('.stat').classList.remove('none-view');
-  elem('.sprint-play').classList.add('none-view');
   elem('.score_total').innerHTML = elem('.score').innerHTML;
   elem('.answer-check').classList.remove('active');
   audioHandler();
   setStatistics(goodIds, badIds, bestChain);
+  document.body.classList.add('loaded');
 }
 
 export function clearStat() {

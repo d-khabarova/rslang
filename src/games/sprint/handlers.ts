@@ -29,6 +29,7 @@ function hideSprint() {
   elem('#auth_form')?.classList.remove('none-view');
   elem('.footer').classList.remove('none-view');
   elem('.sprint').classList.add('none-view');
+  elem('.sprint-play').classList.add('none-view');
   elem('.word').innerHTML = '';
   elem('.translate').innerHTML = '';
   elem('.score').innerHTML = '0';

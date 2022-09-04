@@ -37,8 +37,10 @@ export default function renderSprint() {
     <h3 class="word"></h3>
     <h4 class="translate"></h4>
     <div class="answer-check">🗸</div>
+    <div class="buttons-check">
     <button id="false"><span class="arrow">⟵</span> Неверно</button>
     <button id="true">Верно <span class="arrow">⟶</span></button></div>
+    </div>    
   </div>
   <div class="stat none-view">
     <h2>Ваш результат: <span class="score_total">0</span> очков</h2>

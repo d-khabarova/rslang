@@ -72,7 +72,9 @@ class Sprint {
       const target = e.target as Element;
       answerType = target.id;
     }
-    this.checkAnswer(answerType);
+    if (!document.querySelector('.sprint-play.none-view')) {
+      this.checkAnswer(answerType);
+    }
   }
 
   async renderCard(id: string, randomId: string) {
@@ -96,7 +98,7 @@ class Sprint {
     } else {
       badAnswer(this.ids[this.i]);
     }
-    if (this.i <= this.ids.length - 2) {
+    if (this.i < this.ids.length - 1) {
       this.i += 1;
     } else {
       pages.push(this.page);
@@ -105,6 +107,7 @@ class Sprint {
       this.words.forEach((word) => {
         this.ids.push(word.id);
       });
+      this.i += 1;
     }
     this.randomId = getRandomId(this.ids);
     await this.renderCard(this.ids[this.i], this.randomId);
