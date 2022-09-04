@@ -14,7 +14,7 @@ export function renderMainPage() {
         <li class="nav_item"><button class="nav_link active">Главная</button></li>
         <li class="nav_item"><button class="nav_link">Учебник</button></li>
         <li class="nav_item"><button class="nav_link nav_audiocall">Аудиовызов</button></li>
-        <li class="nav_item"><button class="nav_link">Спринт</button></li>
+        <li class="nav_item"><button class="nav_link nav_sprint">Спринт</button></li>
         <li class="nav_item for_auth_user"><button class="nav_link">Статистика</button></li>
         <li class="nav_item auth_btn"><button class="nav_link">Авторизация</button></li>
         <li class="nav_item logout for_auth_user"><button class="nav_link">Выйти</button></li>
@@ -44,7 +44,7 @@ export function renderMainPage() {
           <p class="benefit__card-title">Аудиовызов</p>
           <button class="button">Попробовать</button>
         </div>
-        <div class="benefit__card">
+        <div class="benefit__card card-sprint">
           <img src="./assets/child6.png" alt="child3">
           <p class="benefit__card-title">Спринт</p>
           <button class="button">Попробовать</button>

@@ -1,14 +1,15 @@
 import './index.scss';
 import { renderMainPage } from './main/main';
-import App from './app';
+import Auth from './components/authorization/authorization';
 import audioCall from './games/audiocall/audiocall';
+import renderSprint from './games/sprint/renderSprint';
 
 renderMainPage();
-
-const app = new App();
-app.start();
+const auth = new Auth();
+auth.identification();
 
 audioCall();
+renderSprint();
 
 window.onload = () => {
   document.body.classList.add('loaded');
