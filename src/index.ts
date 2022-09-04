@@ -10,3 +10,7 @@ auth.identification();
 
 audioCall();
 renderSprint();
+
+window.onload = () => {
+  document.body.classList.add('loaded');
+};

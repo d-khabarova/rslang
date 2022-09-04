@@ -2,6 +2,12 @@ import './main.scss';
 
 export function renderMainPage() {
   const mainPage = `
+  <div class="preloader">
+    <div class="preloader__row">
+      <div class="preloader__item"></div>
+      <div class="preloader__item"></div>
+    </div>
+  </div>
   <header class="header" id="header">
     <nav class="menu">
       <ul class="nav_list">
@@ -33,7 +39,7 @@ export function renderMainPage() {
           <p class="benefit__card-title">Учебник</p>
           <button class="button">Попробовать</button>
         </div>
-        <div class="benefit__card">
+        <div class="benefit__card card_audiocall">
           <img src="./assets/child7.png" alt="child2">
           <p class="benefit__card-title">Аудиовызов</p>
           <button class="button">Попробовать</button>
