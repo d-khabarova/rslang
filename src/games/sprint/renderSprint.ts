@@ -20,7 +20,7 @@ export default function renderSprint() {
   </div>
   <div class="sprint-play none-view">
     <div class="timer">
-        <div class="timer__seconds">00</div>
+        <div class="timer__seconds">60</div>
     </div>
   <div class="card">
     <div class="score_block">

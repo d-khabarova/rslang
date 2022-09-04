@@ -38,6 +38,7 @@ function hideSprint() {
   elem('.good_stat').innerHTML = '';
   elem('.bad_stat').innerHTML = '';
   elem('.score_total').innerHTML = '';
+  elem('.timer__seconds').innerHTML = '60';
   const indicators = document.querySelectorAll('.indicator');
   indicators.forEach((indicator) => {
     indicator.classList.remove('active');

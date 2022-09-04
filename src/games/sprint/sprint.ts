@@ -3,7 +3,7 @@ import { IApiGetWords } from '../../types/apiTypes';
 import { pages, getRandomId, getRandomPage } from './randoms';
 import { goodAnswer, badAnswer, clearStat } from './functions';
 import { elem } from '../../utils/querySelectors';
-import timer from './timer';
+import { timer, stopTimer } from './timer';
 
 class Sprint {
   api: API;
@@ -49,6 +49,7 @@ class Sprint {
     this.ids = [];
     this.i = 0;
     clearStat();
+    stopTimer();
   }
 
   answerHandler(e: Event) {
