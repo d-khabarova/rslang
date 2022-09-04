@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import { WordContent } from '../types/apiTypes';
+import { IApiGetWords } from '../types/apiTypes';
 import API from '../Api/api';
 import './textbook.scss';
 
@@ -21,9 +21,9 @@ if (localStorage.getItem('textbook')) {
   textbookState = JSON.parse(writeState);
 }
 
-function createWordItem(words: WordContent[]) {
+function createWordItem(words: IApiGetWords[]) {
   let wordCard = '';
-  words.forEach((word: WordContent) => {
+  words.forEach((word: IApiGetWords) => {
     wordCard += `
     <div class="wordItem" data-id="${word.id}">
       <div class="wordItem__image" style="background-image: url('${base}/${word.image}');"></div>
@@ -47,7 +47,7 @@ function createWordItem(words: WordContent[]) {
   return wordCard;
 }
 
-function createTextbookPage() {
+export function createTextbookPage() {
   const main = document.querySelector('.main') as HTMLElement;
   main.innerHTML = '';
   const content = `
@@ -80,9 +80,9 @@ function createTextbookPage() {
   main.innerHTML = content;
 }
 
-function playAudioWord(words: WordContent[], card: HTMLElement) {
+function playAudioWord(words: IApiGetWords[], card: HTMLElement) {
   const id: string = card.dataset.id as string;
-  const word: WordContent = words.find((wordId: WordContent) => wordId.id === id) as WordContent;
+  const word: IApiGetWords = words.find((wordId: IApiGetWords) => wordId.id === id) as IApiGetWords;
   const wordAudio = document.createElement('audio');
   wordAudio.src = `${base}/${word.audio}`;
   const wordMeaning = document.createElement('audio');
@@ -106,15 +106,15 @@ function playAudioWord(words: WordContent[], card: HTMLElement) {
 async function renderWordItem(): Promise<void> {
   const textbookPage = document.querySelector('.textbook__page') as HTMLElement;
   textbookPage.innerHTML = '';
-  let words: WordContent[] = [];
-  words = await api.getWords(textbookState.group, textbookState.page);
+  let words: IApiGetWords[] = [];
+  words = await api.getWordsTextbook(textbookState.group, textbookState.page);
   textbookPage.innerHTML = createWordItem(words);
 
   const wordItem = document.querySelectorAll('.wordItem') as NodeListOf<HTMLElement>;
   wordItem.forEach((card: HTMLElement) => {
     const sound = card.querySelector('.wordItem__sound-image') as HTMLElement;
     sound.addEventListener(('click'), () => {
-      playAudioWord(words as WordContent[], card);
+      playAudioWord(words as IApiGetWords[], card);
     });
   });
 
@@ -127,17 +127,17 @@ async function renderWordItem(): Promise<void> {
 
 function toPrevPage() {
   textbookState.page -= 1;
-  renderWordItem();
+  renderTextbookPage();
 }
 
 function toNextPage() {
   textbookState.page += 1;
-  renderWordItem();
+  renderTextbookPage();
 }
 
 function toGroup(groupInput: HTMLSelectElement) {
   textbookState.group = +groupInput.value;
-  renderWordItem();
+  renderTextbookPage();
 }
 
 export async function renderTextbookPage() {
