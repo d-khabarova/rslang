@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -25,17 +24,18 @@ module.exports = (env, options) => {
         },
         {
           test: /\.scss$/,
-          use: [
-            MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader',
-          ],
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
         },
         {
           test: /\.ts$/i,
-          exclude: /node_modules/,
           use: ['ts-loader'],
         },
         {
           test: /\.(png|svg|jpe?g|gif)$/i,
+          type: 'asset/resource',
+        },
+        {
+          test: /\.mp3$/,
           type: 'asset/resource',
         },
       ],
@@ -59,11 +59,15 @@ module.exports = (env, options) => {
           {
             from: path.resolve(__dirname, 'src/assets'),
             to: path.resolve(__dirname, 'dist/assets'),
+            globOptions: {
+              dot: true,
+              gitignore: false,
+              ignore: ['**/sounds/**'],
+            },
           },
         ],
       }),
     ],
   };
-
   return config;
 };

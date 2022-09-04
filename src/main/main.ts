@@ -2,15 +2,22 @@ import './main.scss';
 
 export function renderMainPage() {
   const mainPage = `
+  <div class="preloader">
+    <div class="preloader__row">
+      <div class="preloader__item"></div>
+      <div class="preloader__item"></div>
+    </div>
+  </div>
   <header class="header" id="header">
     <nav class="menu">
       <ul class="nav_list">
-        <li class="nav_item"><a href="#" class="nav_link active">Главная</a></li>
-        <li class="nav_item"><a href="#" class="nav_link nav_textbook">Учебник</a></li>
-        <li class="nav_item"><a href="#" class="nav_link">Аудиовызов</a></li>
-        <li class="nav_item"><a href="#" class="nav_link">Спринт</a></li>
-        <li class="nav_item"><a href="#" class="nav_link">Статистика</a></li>
-        <li class="nav_item"><a href="#" class="nav_link">Авторизация</a></li>
+        <li class="nav_item"><button class="nav_link active">Главная</button></li>
+        <li class="nav_item"><button class="nav_link nav_textbook">Учебник</button></li>
+        <li class="nav_item"><button class="nav_link nav_audiocall">Аудиовызов</button></li>
+        <li class="nav_item"><button class="nav_link nav_sprint">Спринт</button></li>
+        <li class="nav_item for_auth_user"><button class="nav_link">Статистика</button></li>
+        <li class="nav_item auth_btn"><button class="nav_link">Авторизация</button></li>
+        <li class="nav_item logout for_auth_user"><button class="nav_link">Выйти</button></li>
       </ul>
     </nav>
     <div class="burger" id="burger">
@@ -32,14 +39,14 @@ export function renderMainPage() {
           <p class="benefit__card-title">Учебник</p>
           <button class="button">Попробовать</button>
         </div>
-        <div class="benefit__card">
+        <div class="benefit__card card_audiocall">
           <img src="./assets/child7.png" alt="child2">
-          <p class="benefit__card-title">Мини-игры</p>
+          <p class="benefit__card-title">Аудиовызов</p>
           <button class="button">Попробовать</button>
         </div>
-        <div class="benefit__card">
+        <div class="benefit__card card-sprint">
           <img src="./assets/child6.png" alt="child3">
-          <p class="benefit__card-title">Статистика</p>
+          <p class="benefit__card-title">Спринт</p>
           <button class="button">Попробовать</button>
         </div>
       </div>

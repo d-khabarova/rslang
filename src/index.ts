@@ -1,10 +1,18 @@
 import './index.scss';
 import { renderMainPage } from './main/main';
-import App from './app';
+import Auth from './components/authorization/authorization';
+import audioCall from './games/audiocall/audiocall';
+import renderSprint from './games/sprint/renderSprint';
 import listenPage from './listen';
 
 renderMainPage();
+const auth = new Auth();
+auth.identification();
 
-const api = new App();
-api.start();
+audioCall();
+renderSprint();
 listenPage();
+
+window.onload = () => {
+  document.body.classList.add('loaded');
+};

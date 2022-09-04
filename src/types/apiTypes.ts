@@ -9,7 +9,7 @@ export interface ApiSignIn {
   password: string;
 }
 
-export interface WordContent {
+export interface IApiGetWords {
   id: string;
   group: number;
   page: number;
@@ -21,28 +21,11 @@ export interface WordContent {
   textMeaning: string;
   textExample: string;
   transcription: string;
-  wordTranslate: string;
-  textMeaningTranslate: string;
   textExampleTranslate: string;
+  textMeaningTranslate: string;
+  wordTranslate: string;
 }
 
-export interface OptionalUserWord {
-  dateWhenItBecameLearned: string | false;
-  dateWhenItBecameNew: string | false;
-  gameInWhichItBecameNew: string | false;
-  sprint: {
-    totalCount: number;
-    trueCount: number;
-  };
-  audioCall: {
-    totalCount: number;
-    trueCount: number;
-  };
-}
-
-export interface UserWordContent {
-  id: string;
-  difficulty: string;
-  wordId: string;
-  optional: OptionalUserWord;
+export interface IResponseWordsBody {
+  wordsPage: Array<IApiGetWords>;
 }
