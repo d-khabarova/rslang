@@ -32,7 +32,7 @@ class Sprint {
     e.preventDefault();
     document.body.classList.remove('loaded');
     const state = localStorage.getItem('textbook');
-    if (state !== null) {
+    if (state !== null && target.classList.contains('sprint-btn')) {
       const textbookState = JSON.parse(state);
       this.group = textbookState.group.toString();
       this.page = textbookState.page.toString();
