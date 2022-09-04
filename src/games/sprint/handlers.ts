@@ -12,7 +12,7 @@ function showSprintPlay(e: Event) {
 function showSprint() {
   elem('.header').classList.add('none-view');
   elem('.main').classList.add('none-view');
-  elem('#auth_form').classList.add('none-view');
+  elem('#auth_form')?.classList.add('none-view');
   elem('.footer').classList.add('none-view');
   elem('.sprint-play').classList.add('none-view');
   elem('.stat').classList.add('none-view');
@@ -26,7 +26,7 @@ function showSprint() {
 function hideSprint() {
   elem('.header').classList.remove('none-view');
   elem('.main').classList.remove('none-view');
-  elem('#auth_form').classList.remove('none-view');
+  elem('#auth_form')?.classList.remove('none-view');
   elem('.footer').classList.remove('none-view');
   elem('.sprint').classList.add('none-view');
   elem('.word').innerHTML = '';
