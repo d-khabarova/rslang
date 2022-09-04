@@ -12,3 +12,7 @@ auth.identification();
 audioCall();
 renderSprint();
 renderStatisticsPage();
+
+window.onload = () => {
+  document.body.classList.add('loaded');
+};

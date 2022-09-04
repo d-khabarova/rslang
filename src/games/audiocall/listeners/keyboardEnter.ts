@@ -1,15 +1,13 @@
-import genRandomGameWords from './random/gameWords';
-import { elem, btn } from '../../utils/querySelectors';
-import iteration from './iteration';
-import { gameSteps } from './variables/consts';
-import audiocall from './variables/audiocallObjs';
-import checkAnswer from './checkAnswer';
-import showResult from './result/showResult';
+import audiocall from '../variables/audiocallObjs';
+import { gameSteps } from '../variables/consts';
+import { elem, btn } from '../../../utils/querySelectors';
+import iteration from '../iteration';
+import checkAnswer from '../checkAnswer';
+import showResult from '../result/showResult';
 
-export default async function callGenerator() {
-  genRandomGameWords();
-  await iteration();
-  btn('.next-btn').onclick = async () => {
+export default async function keyboardEnter(keyboardEvt: KeyboardEvent) {
+  if (!document.querySelector('.gameplay-audiocall.none-view') && keyboardEvt.key === 'Enter') {
+    keyboardEvt.preventDefault();
     if (btn('.next-btn').innerHTML === 'НЕ ЗНАЮ') {
       checkAnswer();
     } else if (audiocall.gameStep === gameSteps) {
@@ -33,5 +31,5 @@ export default async function callGenerator() {
       audiocall.gameStep += 1;
       await iteration();
     }
-  };
+  }
 }

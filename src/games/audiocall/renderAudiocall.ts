@@ -1,4 +1,4 @@
-import './audiocall.scss';
+import './styles/audiocall.scss';
 import { elem } from '../../utils/querySelectors';
 
 export default function renderAudiocall() {
@@ -25,9 +25,19 @@ export default function renderAudiocall() {
         <p class="answer"></p>
       </div>
     </div>
-    <div class="answers-audiocall">
-    </div>
+    <div class="answers-audiocall"></div>
     <button class="next-btn">НЕ ЗНАЮ</button>
+  </div>
+  <div class="audiocall-result none-view">
+    <h2>Ваш результат</h2>
+    <div class="good-title">Верно: <span class="audiocall-known">0</span></div>
+    <div class="good-stat"></div>
+    <div class="bad-title">Неверно: <span class="audiocall-mistakes">0</span></div>
+    <div class="bad-stat"></div>
+    <div class="exit-btns">
+      <button class="continue">Продолжить тренировку</button>
+      <button class="to-main">На главную страницу</button>
+    </div>
   </div>
 </section>
 `;
