@@ -2,6 +2,7 @@
 import { IApiGetWords } from '../types/apiTypes';
 import API from '../Api/api';
 import './textbook.scss';
+import { showSprintPlay } from '../games/sprint/handlers';
 
 const base = 'https://react-rslang-be-d-khabarova.herokuapp.com';
 const api = new API();
@@ -104,6 +105,7 @@ function playAudioWord(words: IApiGetWords[], card: HTMLElement) {
 }
 
 async function renderWordItem(): Promise<void> {
+  document.body.classList.remove('loaded');
   const textbookPage = document.querySelector('.textbook__page') as HTMLElement;
   textbookPage.innerHTML = '';
   let words: IApiGetWords[] = [];
@@ -123,6 +125,7 @@ async function renderWordItem(): Promise<void> {
     nav.style.opacity = '0';
   }
   localStorage.setItem('textbook', JSON.stringify(textbookState));
+  document.body.classList.add('loaded');
 }
 
 function toPrevPage() {
@@ -145,6 +148,7 @@ export async function renderTextbookPage() {
   renderWordItem();
 
   const groupInput = document.querySelector('.textbook__select[name="group"]') as HTMLSelectElement;
+  (groupInput.querySelector(`option[value='${textbookState.group}'`) as HTMLOptionElement).selected = true;
   groupInput.addEventListener('input', () => {
     textbookState.page = 0;
     toGroup(groupInput);
@@ -157,8 +161,8 @@ export async function renderTextbookPage() {
   if (!prevBtn.classList.contains('disable')) prevBtn.addEventListener('click', toPrevPage);
   if (!nextBtn.classList.contains('disable')) nextBtn.addEventListener('click', toNextPage);
 
-  // const sprintBtn = document.querySelector('.sprint-btn') as HTMLElement;
-  // sprintBtn.addEventListener('click', startGame);
+  const sprintBtn = document.querySelector('.sprint-btn') as HTMLElement;
+  sprintBtn.addEventListener('click', showSprintPlay);
   // const audioCall = document.querySelector('.audioCall-btn') as HTMLElement;
   // audioCall.addEventListener('click', startGame);
 }

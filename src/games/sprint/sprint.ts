@@ -34,10 +34,10 @@ class Sprint {
     const state = localStorage.getItem('textbook');
     if (state !== null) {
       const textbookState = JSON.parse(state);
-      this.group = textbookState.group;
-      this.page = textbookState.page;
+      this.group = textbookState.group.toString();
+      this.page = textbookState.page.toString();
     } else {
-      this.group = target.getAttribute('data-level') as string;
+      this.group = target.getAttribute('data-level') as string || '0';
       this.page = getRandomPage();
     }
     this.words = await this.api.getWordsSprint(this.group, this.page);

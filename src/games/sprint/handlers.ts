@@ -3,9 +3,15 @@ import Sprint from './sprint';
 
 const sprint = new Sprint();
 
-function showSprintPlay(e: Event) {
+export function showSprintPlay(e: Event) {
+  elem('.sprint').classList.remove('none-view');
   elem('.welcome').classList.add('none-view');
   elem('.sprint-play').classList.remove('none-view');
+  elem('.header').classList.add('none-view');
+  elem('.main').classList.add('none-view');
+  elem('#auth_form')?.classList.add('none-view');
+  elem('.footer').classList.add('none-view');
+  elem('.stat').classList.add('none-view');
   sprint.start(e);
 }
 
@@ -47,7 +53,7 @@ function hideSprint() {
   sprint.stopPlay();
 }
 
-export default function sprintBtnHandlers() {
+export function sprintBtnHandlers() {
   btn('.nav_sprint').addEventListener('click', showSprint);
   elem('.card-sprint').addEventListener('click', showSprint);
   btn('#true').addEventListener('click', sprint.answerHandler.bind(sprint));

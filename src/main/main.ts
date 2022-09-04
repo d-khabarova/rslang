@@ -11,7 +11,7 @@ export function renderMainPage() {
   <header class="header" id="header">
     <nav class="menu">
       <ul class="nav_list">
-        <li class="nav_item"><button class="nav_link active">Главная</button></li>
+        <li class="nav_item"><button class="nav_link nav_main active">Главная</button></li>
         <li class="nav_item"><button class="nav_link nav_textbook">Учебник</button></li>
         <li class="nav_item"><button class="nav_link nav_audiocall">Аудиовызов</button></li>
         <li class="nav_item"><button class="nav_link nav_sprint">Спринт</button></li>

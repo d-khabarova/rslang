@@ -1,5 +1,5 @@
 import './sprint.scss';
-import sprintBtnHandlers from './handlers';
+import { sprintBtnHandlers } from './handlers';
 
 export default function renderSprint() {
   const sprintSection = `
