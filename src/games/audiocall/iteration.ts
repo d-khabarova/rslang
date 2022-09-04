@@ -27,5 +27,5 @@ export default async function iteration() {
   btns('.var').forEach((b) => {
     b.addEventListener('click', clickAnswer, { once: true });
   });
-  elem('.gameplay-audiocall').classList.add('loaded');
+  document.body.classList.add('loaded');
 }

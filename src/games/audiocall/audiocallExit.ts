@@ -9,7 +9,6 @@ export default function exit() {
   elem('.audiocall').classList.add('none-view');
   elem('.gameplay-audiocall').classList.add('none-view');
   elem('.answers-audiocall').innerHTML = '';
-  elem('.gameplay-audiocall').classList.remove('loaded');
   audiocall.gameStep = 0;
   if (elem('.answerImage')) {
     elem('.answerImage').remove();

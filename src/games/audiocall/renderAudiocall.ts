@@ -1,5 +1,4 @@
 import './styles/audiocall.scss';
-import './styles/preloader.scss';
 import { elem } from '../../utils/querySelectors';
 
 export default function renderAudiocall() {
@@ -20,12 +19,6 @@ export default function renderAudiocall() {
     </div>
   </div>
   <div class="gameplay-audiocall none-view">
-    <div class="preloader">
-      <div class="preloader__row">
-        <div class="preloader__item"></div>
-        <div class="preloader__item"></div>
-      </div>
-    </div>
     <div class="solution-field">
       <div>
         <button class="btn-audio"></button>

@@ -2,6 +2,12 @@ import './main.scss';
 
 export function renderMainPage() {
   const mainPage = `
+  <div class="preloader">
+    <div class="preloader__row">
+      <div class="preloader__item"></div>
+      <div class="preloader__item"></div>
+    </div>
+  </div>
   <header class="header" id="header">
     <nav class="menu">
       <ul class="nav_list">

@@ -9,3 +9,7 @@ const app = new App();
 app.start();
 
 audioCall();
+
+window.onload = () => {
+  document.body.classList.add('loaded');
+};

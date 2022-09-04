@@ -9,6 +9,7 @@ const api = new API();
 export default async function startAudioCall(
   btnNumber: number,
 ): Promise<IApiGetWords[]> {
+  document.body.classList.remove('loaded');
   const difficultyLevel: number = btnNumber - numberingDifference;
   const makeARandomPage: number = getRandomInt(pagesPerLevel);
   const { wordsPage } = await api.getWords(difficultyLevel, makeARandomPage);
