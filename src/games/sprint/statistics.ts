@@ -46,12 +46,12 @@ export async function getStatistic(ids: Array<string>) {
   return stat;
 }
 
-export function setStatistics(good: Array<string>, bad: Array<string>) {
+export function setStatistics(good: Array<string>, bad: Array<string>, bestChain: number) {
   const dayStatSprint = localStorage.getItem('day_stat_sprint');
   if (dayStatSprint !== null) {
     const statSprint: StatState = JSON.parse(dayStatSprint);
-    if (statSprint.best < good.length) {
-      statSprint.best = good.length;
+    if (statSprint.best < bestChain) {
+      statSprint.best = bestChain;
     }
     statSprint.goods += good.length;
     statSprint.bads += bad.length;
@@ -60,7 +60,7 @@ export function setStatistics(good: Array<string>, bad: Array<string>) {
     const statSprint: StatState = {
       goods: good.length,
       bads: bad.length,
-      best: good.length,
+      best: bestChain,
     };
     localStorage.setItem('day_stat_sprint', JSON.stringify(statSprint));
   }

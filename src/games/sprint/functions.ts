@@ -6,6 +6,7 @@ import incorrect from '../../assets/sounds/incorrect.mp3';
 let goodIds: Array<string> = [];
 let badIds: Array<string> = [];
 let counterTrueAnswer = 0;
+let bestChain = 0;
 const countForIncrease = 4;
 
 export function goodAnswer(id: string) {
@@ -51,6 +52,9 @@ export function badAnswer(id: string) {
   indicators.forEach((indicator) => {
     indicator.classList.remove('active');
   });
+  if (counterTrueAnswer > bestChain) {
+    bestChain = counterTrueAnswer;
+  }
   counterTrueAnswer = 0;
   scorePlus.innerHTML = '10';
   badIds.push(id);
@@ -68,7 +72,7 @@ export async function finish() {
   elem('.score_total').innerHTML = elem('.score').innerHTML;
   elem('.answer-check').classList.remove('active');
   audioHandler();
-  setStatistics(goodIds, badIds);
+  setStatistics(goodIds, badIds, bestChain);
 }
 
 export function clearStat() {
