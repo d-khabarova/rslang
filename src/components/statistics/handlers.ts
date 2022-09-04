@@ -16,7 +16,6 @@ function hideStatisticsPage() {
   elem('.main').classList.remove('none-view');
   elem('#auth_form')?.classList.remove('none-view');
   elem('.footer').classList.remove('none-view');
-  elem('.sprint').classList.remove('none-view');
   elem('.statistics-page').classList.add('none-view');
 }
 

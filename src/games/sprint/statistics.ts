@@ -1,6 +1,7 @@
 import API from '../../Api/api';
 
 const api = new API();
+const day = 86400000;
 
 type StatState = {
   goods: number;
@@ -48,7 +49,9 @@ export async function getStatistic(ids: Array<string>) {
 
 export function setStatistics(good: Array<string>, bad: Array<string>, bestChain: number) {
   const dayStatSprint = localStorage.getItem('day_stat_sprint');
-  if (dayStatSprint !== null) {
+  const startDateSprint = localStorage.getItem('start_date_sprint');
+  if (dayStatSprint !== null
+    && (startDateSprint !== null && (+startDateSprint + day) > Date.now())) {
     const statSprint: StatState = JSON.parse(dayStatSprint);
     if (statSprint.best < bestChain) {
       statSprint.best = bestChain;
@@ -63,5 +66,6 @@ export function setStatistics(good: Array<string>, bad: Array<string>, bestChain
       best: bestChain,
     };
     localStorage.setItem('day_stat_sprint', JSON.stringify(statSprint));
+    localStorage.setItem('start_date_sprint', JSON.stringify(Date.now()));
   }
 }

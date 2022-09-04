@@ -6,9 +6,13 @@ export default function renderStatisticsPage() {
     <div class="exit"><button class="btn-exit-statistics">x</button></div>
     <h1>Статистика за день</h1>
     <h3>Спринт</h3>
-    <div>Количество изученных слов: <span class="count-words">0</span></div>
+    <div>Количество изученных слов: <span class="count-words-sprint">0</span></div>
     <div>Процент правильных ответов: <span class="percent-sprint">0</span>%</div>
     <div>Лучшая серия: <span class="best-chain-sprint">0</span></div>
+    <h3>Аудиовызов</h3>
+    <div>Количество изученных слов: <span class="count-words-audiocall">0</span></div>
+    <div>Процент правильных ответов: <span class="percent-audiocall">0</span>%</div>
+    <div>Лучшая серия: <span class="best-chain-audiocall">0</span></div>
   </section>`;
   const main = document.querySelector('body') as HTMLElement;
   main.insertAdjacentHTML('beforeend', statisticsPage);
