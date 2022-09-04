@@ -31,8 +31,15 @@ class Sprint {
     const target = e.target as Element;
     e.preventDefault();
     document.body.classList.remove('loaded');
-    this.group = target.getAttribute('data-level') as string;
-    this.page = getRandomPage();
+    const state = localStorage.getItem('textbook');
+    if (state !== null) {
+      const textbookState = JSON.parse(state);
+      this.group = textbookState.group;
+      this.page = textbookState.page;
+    } else {
+      this.group = target.getAttribute('data-level') as string;
+      this.page = getRandomPage();
+    }
     this.words = await this.api.getWordsSprint(this.group, this.page);
     this.startPlay(this.words);
   }
