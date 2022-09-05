@@ -34,7 +34,7 @@ export function renderMainPage() {
     <section class="benefits">
       <h2 class="title">Возможности и преимущества</h2>
       <div class="benefits__cards">
-        <div class="benefit__card">
+        <div class="benefit__card card_textbook">
           <img src="./assets/child9.png" alt="child1">
           <p class="benefit__card-title">Учебник</p>
           <button class="button">Попробовать</button>
@@ -58,21 +58,21 @@ export function renderMainPage() {
           <img class="developer__img" src="https://avatars.githubusercontent.com/u/11944139?v=4" alt="Dasha">
           <div class="developer__disc">
             <h3 class="developer__name">Даша <a href="https://github.com/d-khabarova"><i class="fab fa-github"></i></a></h3>
-            <p>Описание выполненной работы</p>
+            <p>Тим-лид команды! Реализовала авторизацию и регистрацию пользователя. Разработала и реализовала мини-игру "Спринт". Проработала страницу статистики. Сделала копию бэкенда.</p>
           </div>
         </div>
         <div class="developer__card">
           <img class="developer__img" src="https://avatars.githubusercontent.com/u/83439578?v=4" alt="Yura">
           <div class="developer__disc">
             <h3 class="developer__name">Юра <a href="https://github.com/Manofsky"><i class="fab fa-github"></i></a></h3>
-            <p>Описание выполненной работы</p>
+            <p>Разработал и реализовал мини-игру "Аудиовызов". Управление игрой осуществляется как мышью, так и через клавиатуру. По окончанию выводится результат.</p>
           </div>
         </div>
         <div class="developer__card">
           <img class="developer__img" src="https://avatars.githubusercontent.com/u/89844910?v=4" alt="Lena">
           <div class="developer__disc">
             <h3 class="developer__name">Лена <a href="https://github.com/ElenaSchem"><i class="fab fa-github"></i></a></h3>
-            <p>Описание выполненной работы</p>
+            <p>Оформила главную страницу приложения, подобрала шрифт, цвета. Добавила электронный учебник с отображением списка слов.</p>
           </div>
         </div>
       </div>

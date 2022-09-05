@@ -104,8 +104,8 @@
     width: 100%;
     display: flex;
     column-gap: 20px;
-    font-size: 25px;
-    line-height: 35px;
+    font-size: 17px;
+    line-height: 24px;
     box-shadow: 0px 0px 20px -1px rgba(34, 60, 80, 0.27);
 
     .wordItem__image {
@@ -113,6 +113,7 @@
       background-position: center;
       background-size: cover;
       border-radius: 5px 0 0 5px;
+      max-width: 320px;
     }
 
     .wordItem__content {
@@ -125,16 +126,26 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 5px;
-      font-size: 2rem;
+      font-size: 1.5rem;
+      margin: 10px 0;
+      line-height: 25px;
 
       .wordItem__sound-image {
         cursor: pointer;
+        background-color: $colorSelect;
+        border-radius: 50%;
+
+        &:hover {
+          width: 25px;
+          transform: $transition-hover;          
+        }
       }
     }
 
     .wordItem__explanation-translate,
     .wordItem__example-translate {
       color: $colorWordItemText;
+      margin-bottom: 10px;
     }
   }
 }
@@ -144,11 +155,14 @@
     flex-direction: column;
   }
 
-  .wordItem{
-    flex-direction: column;
-  }
-
-  .wordItem__image {
-    height: 300px;
-  }
+  .textbook__page {
+    .wordItem{
+      flex-direction: column;
+    
+      .wordItem__image {
+        height: 300px;
+        max-width: 100%;
+      }
+    }
+  }  
 }
