@@ -2,6 +2,7 @@ import { getStatistic, audioHandler, setStatistics } from './statistics';
 import { elem } from '../../utils/querySelectors';
 import fanfar from '../../assets/sounds/fanfar.mp3';
 import incorrect from '../../assets/sounds/incorrect.mp3';
+import { isAuth } from '../../components/storage/functions';
 
 let goodIds: Array<string> = [];
 let badIds: Array<string> = [];
@@ -73,7 +74,9 @@ export async function finish() {
   elem('.score_total').innerHTML = elem('.score').innerHTML;
   elem('.answer-check').classList.remove('active');
   audioHandler();
-  setStatistics(goodIds, badIds, bestChain);
+  if (isAuth()) {
+    setStatistics(goodIds, badIds, bestChain);
+  }
   document.body.classList.add('loaded');
 }
 
