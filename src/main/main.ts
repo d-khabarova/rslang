@@ -11,7 +11,7 @@ export function renderMainPage() {
   <header class="header" id="header">
     <nav class="menu">
       <ul class="nav_list">
-        <li class="nav_item"><button class="nav_link active">Главная</button></li>
+        <li class="nav_item"><button class="nav_link nav_main active">Главная</button></li>
         <li class="nav_item"><button class="nav_link nav_textbook">Учебник</button></li>
         <li class="nav_item"><button class="nav_link nav_audiocall">Аудиовызов</button></li>
         <li class="nav_item"><button class="nav_link nav_sprint">Спринт</button></li>
@@ -34,7 +34,7 @@ export function renderMainPage() {
     <section class="benefits">
       <h2 class="title">Возможности и преимущества</h2>
       <div class="benefits__cards">
-        <div class="benefit__card">
+        <div class="benefit__card card_textbook">
           <img src="./assets/child9.png" alt="child1">
           <p class="benefit__card-title">Учебник</p>
           <button class="button">Попробовать</button>

@@ -6,7 +6,7 @@ const numberingDifference = 1;
 const pagesPerLevel = 30;
 const api = new API();
 
-export default async function startAudioCall(
+export default async function setLevel(
   btnNumber: number,
 ): Promise<IApiGetWords[]> {
   document.body.classList.remove('loaded');

@@ -2,6 +2,7 @@
 import { IApiGetWords } from '../types/apiTypes';
 import API from '../Api/api';
 import './textbook.scss';
+import startAudiocall from '../games/audiocall/startGame';
 
 const base = 'https://react-rslang-be-d-khabarova.herokuapp.com';
 const api = new API();
@@ -159,8 +160,8 @@ export async function renderTextbookPage() {
 
   // const sprintBtn = document.querySelector('.sprint-btn') as HTMLElement;
   // sprintBtn.addEventListener('click', startGame);
-  // const audioCall = document.querySelector('.audioCall-btn') as HTMLElement;
-  // audioCall.addEventListener('click', startGame);
+  const audioCall = document.querySelector('.audioCall-btn') as HTMLElement;
+  audioCall.addEventListener('click', startAudiocall);
 }
 
 export default renderTextbookPage;
