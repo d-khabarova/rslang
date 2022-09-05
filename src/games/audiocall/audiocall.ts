@@ -5,6 +5,7 @@ import callGenerator from './callGenerator';
 import keyboardLevel from './listeners/keyboardLevel';
 import keyboardAnswer from './listeners/keyboardAnswer';
 import keyboardEnter from './listeners/keyboardEnter';
+import keyboardReplay from './listeners/keyboardReplay';
 import openMenu from './audiocallMenuOpen';
 import exit from './audiocallExit';
 import audiocall from './variables/audiocallObjs';
@@ -15,6 +16,7 @@ export default function audioCall(): void {
   document.addEventListener('keydown', keyboardLevel);
   document.addEventListener('keydown', keyboardAnswer);
   document.addEventListener('keydown', keyboardEnter);
+  document.addEventListener('keydown', keyboardReplay);
   leaveResult();
   btn('.nav_audiocall').addEventListener('click', openMenu);
   elem('.card_audiocall').addEventListener('click', openMenu);
