@@ -1,7 +1,6 @@
 @import '../../../config.scss';
 
 $bg-audiocall: pink;
-$bg-audiocall-card: rgb(42, 112, 165);
 $bg-audioicon: aquamarine;
 $border-cards: brown;
 $border-example: violet;
@@ -12,13 +11,6 @@ $good-color: rgb(28, 160, 34);
 $bad-color: rgb(160, 25, 25);
 $btn-hover: rgb(212, 161, 200);
 $resultTitle-color: $colorActive;
-
-.audiocall-card {
-  width: 200px;
-  height: 300px;
-  background-color: $bg-audiocall-card;
-  border: 2px solid $border-cards;
-}
 
 .audiocall {
   display: flex;
@@ -231,6 +223,42 @@ $resultTitle-color: $colorActive;
   display: none;
 }
 
-.hidden {
-  display: none;
+@media (max-width: 768px) {
+  .answers-audiocall {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .exit-btns {
+    margin: -5px 0;
+    display: flex;
+    flex-direction: column;
+
+    button {
+      margin: 5px 0;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .game-menu {
+    h2 {
+      font-size: 30px;
+      letter-spacing: normal;
+    }
+
+    .difficultyLevel {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  .solution-field {
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
 }

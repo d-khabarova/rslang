@@ -7,6 +7,7 @@ export default function exit() {
   elem('.footer').classList.remove('none-view');
   elem('#auth_form')?.classList.remove('none-view');
   elem('.audiocall').classList.add('none-view');
+  elem('.game-menu').classList.add('none-view');
   elem('.gameplay-audiocall').classList.add('none-view');
   elem('.answers-audiocall').innerHTML = '';
   audiocall.gameStep = 0;

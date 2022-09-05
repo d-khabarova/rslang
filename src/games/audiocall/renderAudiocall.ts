@@ -37,6 +37,7 @@ export default function renderAudiocall() {
     <div class="exit-btns">
       <button class="continue">Продолжить тренировку</button>
       <button class="to-main">На главную страницу</button>
+      <button class="to-textbook none-view">На страницу учебника</button>
     </div>
   </div>
 </section>

@@ -13,5 +13,7 @@ export default async function showResult() {
   elem('.good-stat').innerHTML = dataGoodStat;
   elem('.bad-stat').innerHTML = dataBadStat;
   audioHandler();
-  setStatistics(audiocall.goodIds, audiocall.badIds, audiocall.bestChain);
+  if (localStorage.getItem('message') === 'Authenticated') {
+    setStatistics(audiocall.goodIds, audiocall.badIds, audiocall.bestChain);
+  }
 }
