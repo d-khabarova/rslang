@@ -272,3 +272,19 @@
     flex-wrap: wrap;
   }
 }
+
+@media (max-width: 480px) {
+  .main {
+    .developer-container {
+      .developer__card {
+        flex-direction: column;
+        text-align: left;
+      }
+    }
+  }
+  .footer {
+    flex-direction: column;
+    height: auto;
+    gap: 20px;
+  }
+}

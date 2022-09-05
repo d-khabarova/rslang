@@ -12,6 +12,6 @@ export default function leaveResult() {
     elem('.header').classList.remove('none-view');
     elem('.main').classList.remove('none-view');
     elem('.footer').classList.remove('none-view');
-    elem('#auth_form').classList.remove('none-view');
+    elem('#auth_form')?.classList.remove('none-view');
   });
 }

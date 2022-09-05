@@ -25,6 +25,7 @@ class API {
     });
     if (rawResponse.status === 417) {
       setErrorMessage('Пользователь с таким email уже существует');
+      document.body.classList.add('loaded');
     }
     const content = await rawResponse.json();
     return content;
@@ -41,6 +42,7 @@ class API {
     });
     if (rawResponse.status === 403 || rawResponse.status === 404) {
       setErrorMessage('Неверный email или пароль!');
+      document.body.classList.add('loaded');
     }
     const content = await rawResponse.json();
     return content;
