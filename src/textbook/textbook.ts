@@ -82,14 +82,18 @@ export function createTextbookPage() {
   main.innerHTML = content;
 }
 
+const wordAudio = document.createElement('audio');
+const wordMeaning = document.createElement('audio');
+const wordExample = document.createElement('audio');
+
 function playAudioWord(words: IApiGetWords[], card: HTMLElement) {
+  wordAudio.pause();
+  wordMeaning.pause();
+  wordExample.pause();
   const id: string = card.dataset.id as string;
   const word: IApiGetWords = words.find((wordId: IApiGetWords) => wordId.id === id) as IApiGetWords;
-  const wordAudio = document.createElement('audio');
   wordAudio.src = `${base}/${word.audio}`;
-  const wordMeaning = document.createElement('audio');
   wordMeaning.src = `${base}/${word.audioMeaning}`;
-  const wordExample = document.createElement('audio');
   wordExample.src = `${base}/${word.audioExample}`;
 
   function playAudio(audioWord: HTMLAudioElement) {
