@@ -1,0 +1,245 @@
+@import '../../config.scss';
+
+$bg-sprint: rgb(207, 228, 247);
+$score-color: $colorActive;
+$good-color: rgb(28, 160, 34);
+$bad-color: rgb(160, 25, 25);
+$non-active: rgb(93, 94, 95);
+
+$transition-active: $transition-hover;
+
+.sprint {
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-sprint;
+  min-height: 100vh;
+}
+
+.exit {
+  margin-left: auto;
+
+  button {
+    padding: 15px 30px;
+    cursor: pointer;
+  }
+}
+
+.btn-exit-sprint {
+  font-size: 30px;
+  border: none;
+  background-color: transparent;
+}
+
+.welcome {
+  margin: auto;
+  text-align: center;
+  color: $colorText;
+
+  h2 {
+    font-size: 40px;
+    letter-spacing: 13px;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .text {
+    padding: 60px 0;
+  }
+
+  button {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+.sprint-play {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0 0 0;
+  text-align: center;
+
+  .timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+    font-size: 48px;
+    border-radius: 50%;
+    border: 2px solid;
+  }
+
+  .score_block {
+    font-size: 40px;
+    color: $score-color;
+  }
+
+  .counter_score {
+    margin: 10px 0;
+  }
+
+  .indicators {
+    display: flex;
+    justify-content: center;
+
+    .indicator {
+      width: 15px;
+      height: 15px;
+      border-radius: 15px;
+      margin: 5px;
+      background-color: $non-active;
+      transition: $transition-active;
+
+      &.active {
+        background-color: $good-color;
+        transition: $transition-active;
+      }
+    }
+        
+  }
+
+  .answer-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: $non-active;
+    margin: 20px auto;
+    color: white;
+    transition: $transition-active;
+
+    &.active {
+      background-color: $good-color;
+      transition: $transition-active;
+    }
+  }
+
+  h3 {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  button {
+    margin:5px 0;    
+    padding: 12px 22px;
+    border-radius: 100px;
+    font-size: 17px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: $colorText;
+    transition: $transition-hover;
+    min-width: 175px;
+
+    &#false {
+      border: 2px solid $bad-color;
+
+      &:hover, &.hover {
+        background: $bad-color;
+      }
+    }
+
+    &#true {
+      border: 2px solid $good-color;
+
+      &:hover, &.hover {
+        background: $good-color;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover, &.hover {      
+      color: $colorTextBtn;
+      cursor: pointer;
+    }
+  }    
+  .card {
+    padding: 30px;
+    border: 2px solid;
+    border-radius: 20px;
+    border-color: transparent;
+    transition: $transition-active;    
+
+    &.good_answer {
+      border-color: $good-color;
+      transition: $transition-active;      
+      box-shadow: $good-color 0px 20px 30px -10px;
+    }
+    &.bad_answer {
+      border-color: $bad-color;
+      transition: $transition-active;
+      box-shadow: $bad-color 0px 20px 30px -10px;
+    }
+  }
+
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  text-align: left;
+
+  h2 {
+    color: $colorActive;
+    text-align: center;
+  }
+  .good_title {
+    color: $good-color;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  .bad_title {
+    color: $bad-color;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+
+  .btn-audio {
+    background-image: url(/src/assets/svg/icon-audio.svg);
+    background-size: 17px;
+    background-position: center;
+    background-repeat: no-repeat;    
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    vertical-align: middle;
+    margin: 5px;
+  }
+
+  .good_stat {
+    .btn-audio {
+      background-color: $good-color;
+    }
+  }
+
+  .bad_stat {
+    .btn-audio {
+      background-color: $bad-color;
+    }
+  }
+}
+
+.none-view {
+  display: none;
+}

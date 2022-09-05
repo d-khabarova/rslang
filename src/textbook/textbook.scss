@@ -1,0 +1,167 @@
+@import '../config';
+
+.textbook__pages {
+  position: relative;
+  min-height: MAX(calc(100vh - 75px), 500px);
+  font-size: 1.6rem;
+  transition: all 0.3s ease-in-out;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 90px;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .textbook__controls {
+    display: flex;
+    gap: 30px;
+
+    .textbook__select,
+    button {
+      height: 100%;
+      padding: 5px 10px;
+      background-color: $colorSelect;
+      font-size: 1rem;
+      color: $colorTextSelect;
+      border-radius: 4px;
+      border-color: transparent;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: $transition-hover;
+    }
+
+    .textbook__select:hover,
+    button:hover {
+      background-color: $colorTextSelect;
+      color: $colorSelect;
+    }
+
+    .page-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+
+      .prev-page,
+      .next-page {
+        padding: 0;
+        width: 30px;
+      }
+
+      .prev-page.disable,
+      .next-page.disable {
+        opacity: 0;
+        cursor: auto;
+      }
+
+      .page-num {
+        width: 40px;
+        font-size: 1rem;
+        text-align: center;
+      }
+    }
+    
+    .sprint-btn,
+    .audioCall-btn {
+      width: 170px;
+    }
+  }
+
+  .top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9;
+    display: block;
+    height: 60px;
+    width: 60px;
+    fill: $colorSelect;
+    cursor: pointer;
+  }
+
+  .top-btn:hover {
+    fill: $colorTextSelect;
+  }
+}
+
+.textbook__page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding-top: 20px;
+
+  .wordItem {
+    margin: 10px;
+    padding: 10px;
+    min-height: 200px;
+    width: 100%;
+    display: flex;
+    column-gap: 20px;
+    font-size: 17px;
+    line-height: 24px;
+    box-shadow: 0px 0px 20px -1px rgba(34, 60, 80, 0.27);
+
+    .wordItem__image {
+      width: 100%;
+      background-position: center;
+      background-size: cover;
+      border-radius: 5px 0 0 5px;
+      max-width: 320px;
+    }
+
+    .wordItem__content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wordItem__header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 5px;
+      font-size: 1.5rem;
+      margin: 10px 0;
+      line-height: 25px;
+
+      .wordItem__sound-image {
+        cursor: pointer;
+        background-color: $colorSelect;
+        border-radius: 50%;
+
+        &:hover {
+          width: 25px;
+          transform: $transition-hover;          
+        }
+      }
+    }
+
+    .wordItem__explanation-translate,
+    .wordItem__example-translate {
+      color: $colorWordItemText;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .textbook__page {
+    .wordItem{
+      flex-direction: column;
+    
+      .wordItem__image {
+        height: 300px;
+        max-width: 100%;
+      }
+    }
+  }  
+}

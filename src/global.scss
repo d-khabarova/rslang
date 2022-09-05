@@ -1,0 +1,42 @@
+@import './config';
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-family: $font-family;
+  color: $colorText;
+  background-color: $colorBg;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  color: $colorText;
+  text-decoration: none;
+  transition: $transition-hover;
+
+  &:hover {
+    color: $colorHover;
+  }
+}
+button {
+  font-family: "Montserrat", sans-serif;
+  &:hover {
+    cursor: pointer;
+  }  
+}
+
+.hidden {
+  display: none;
+}
