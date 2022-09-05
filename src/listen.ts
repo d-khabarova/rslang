@@ -1,7 +1,8 @@
-import { renderTextbookPage } from './textbook/textbook';
+import renderStatisticsPage from './components/statistics/renderStatisticsPage';
 import audioCall from './games/audiocall/audiocall';
 import renderSprint from './games/sprint/renderSprint';
 import { renderMainPage } from './main/main';
+import { renderTextbookPage } from './textbook/textbook';
 import Auth from './components/authorization/authorization';
 
 export default async function listenPage() {
@@ -22,5 +23,6 @@ export default async function listenPage() {
     audioCall();
     renderSprint();
     listenPage();
+    renderStatisticsPage();
   });
 }

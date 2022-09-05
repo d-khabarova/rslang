@@ -15,7 +15,7 @@ export function renderMainPage() {
         <li class="nav_item"><button class="nav_link nav_textbook">Учебник</button></li>
         <li class="nav_item"><button class="nav_link nav_audiocall">Аудиовызов</button></li>
         <li class="nav_item"><button class="nav_link nav_sprint">Спринт</button></li>
-        <li class="nav_item for_auth_user"><button class="nav_link">Статистика</button></li>
+        <li class="nav_item for_auth_user"><button class="nav_link nav_stat">Статистика</button></li>
         <li class="nav_item auth_btn"><button class="nav_link">Авторизация</button></li>
         <li class="nav_item logout for_auth_user"><button class="nav_link">Выйти</button></li>
       </ul>
@@ -58,21 +58,21 @@ export function renderMainPage() {
           <img class="developer__img" src="https://avatars.githubusercontent.com/u/11944139?v=4" alt="Dasha">
           <div class="developer__disc">
             <h3 class="developer__name">Даша <a href="https://github.com/d-khabarova"><i class="fab fa-github"></i></a></h3>
-            <p>Описание выполненной работы</p>
+            <p>Тим-лид команды! Реализовала авторизацию и регистрацию пользователя. Разработала и реализовала мини-игру "Спринт". Проработала страницу статистики. Сделала копию бэкенда.</p>
           </div>
         </div>
         <div class="developer__card">
           <img class="developer__img" src="https://avatars.githubusercontent.com/u/83439578?v=4" alt="Yura">
           <div class="developer__disc">
             <h3 class="developer__name">Юра <a href="https://github.com/Manofsky"><i class="fab fa-github"></i></a></h3>
-            <p>Описание выполненной работы</p>
+            <p>Разработал и реализовал мини-игру "Аудиовызов". Управление игрой осуществляется как мышью, так и через клавиатуру. По окончанию выводится результат.</p>
           </div>
         </div>
         <div class="developer__card">
           <img class="developer__img" src="https://avatars.githubusercontent.com/u/89844910?v=4" alt="Lena">
           <div class="developer__disc">
             <h3 class="developer__name">Лена <a href="https://github.com/ElenaSchem"><i class="fab fa-github"></i></a></h3>
-            <p>Описание выполненной работы</p>
+            <p>Оформила главную страницу приложения, подобрала шрифт, цвета. Добавила электронный учебник с отображением списка слов.</p>
           </div>
         </div>
       </div>

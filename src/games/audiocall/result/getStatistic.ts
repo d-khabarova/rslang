@@ -7,6 +7,7 @@ type StatState = {
 };
 
 const api = new API();
+const day = 86400000;
 
 async function getWordInfo(id: string) {
   const result = await api.getWord(id);
@@ -48,7 +49,9 @@ export async function getStatistic(ids: Array<string>) {
 
 export function setStatistics(good: Array<string>, bad: Array<string>, bestChain: number) {
   const dayStatSprint = localStorage.getItem('day_stat_audiocall');
-  if (dayStatSprint !== null) {
+  const startDateAudio = localStorage.getItem('start_date_audiocall');
+  if (dayStatSprint !== null
+    && (startDateAudio !== null && (+startDateAudio + day) > Date.now())) {
     const statSprint: StatState = JSON.parse(dayStatSprint);
     if (statSprint.best < bestChain) {
       statSprint.best = bestChain;
@@ -63,5 +66,6 @@ export function setStatistics(good: Array<string>, bad: Array<string>, bestChain
       best: bestChain,
     };
     localStorage.setItem('day_stat_audiocall', JSON.stringify(statSprint));
+    localStorage.setItem('start_date_audiocall', JSON.stringify(Date.now()));
   }
 }

@@ -42,7 +42,10 @@ export function logOut() {
   const buttonOut = document.querySelector('.logout') as HTMLElement;
   const buttonAuth = document.querySelector('.auth_btn') as HTMLElement;
   buttonOut.addEventListener('click', () => {
-    localStorage.clear();
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('token');
+    localStorage.removeItem('message');
     renderAuth();
     inputMail.value = '';
     inputPass.value = '';

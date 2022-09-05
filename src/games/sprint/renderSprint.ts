@@ -1,5 +1,5 @@
 import './sprint.scss';
-import sprintBtnHandlers from './handlers';
+import { sprintBtnHandlers } from './handlers';
 
 export default function renderSprint() {
   const sprintSection = `
@@ -20,7 +20,7 @@ export default function renderSprint() {
   </div>
   <div class="sprint-play none-view">
     <div class="timer">
-        <div class="timer__seconds">00</div>
+        <div class="timer__seconds">60</div>
     </div>
   <div class="card">
     <div class="score_block">
@@ -37,8 +37,10 @@ export default function renderSprint() {
     <h3 class="word"></h3>
     <h4 class="translate"></h4>
     <div class="answer-check">🗸</div>
+    <div class="buttons-check">
     <button id="false"><span class="arrow">⟵</span> Неверно</button>
     <button id="true">Верно <span class="arrow">⟶</span></button></div>
+    </div>    
   </div>
   <div class="stat none-view">
     <h2>Ваш результат: <span class="score_total">0</span> очков</h2>

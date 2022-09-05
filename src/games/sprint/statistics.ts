@@ -1,6 +1,13 @@
 import API from '../../Api/api';
 
 const api = new API();
+const day = 86400000;
+
+type StatState = {
+  goods: number;
+  bads: number;
+  best: number;
+};
 
 async function getWordInfo(id: string) {
   const result = await api.getWord(id);
@@ -38,4 +45,27 @@ export async function getStatistic(ids: Array<string>) {
       },
     ));
   return stat;
+}
+
+export function setStatistics(good: Array<string>, bad: Array<string>, bestChain: number) {
+  const dayStatSprint = localStorage.getItem('day_stat_sprint');
+  const startDateSprint = localStorage.getItem('start_date_sprint');
+  if (dayStatSprint !== null
+    && (startDateSprint !== null && (+startDateSprint + day) > Date.now())) {
+    const statSprint: StatState = JSON.parse(dayStatSprint);
+    if (statSprint.best < bestChain) {
+      statSprint.best = bestChain;
+    }
+    statSprint.goods += good.length;
+    statSprint.bads += bad.length;
+    localStorage.setItem('day_stat_sprint', JSON.stringify(statSprint));
+  } else {
+    const statSprint: StatState = {
+      goods: good.length,
+      bads: bad.length,
+      best: bestChain,
+    };
+    localStorage.setItem('day_stat_sprint', JSON.stringify(statSprint));
+    localStorage.setItem('start_date_sprint', JSON.stringify(Date.now()));
+  }
 }

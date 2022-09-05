@@ -1,0 +1,35 @@
+@import '../../config.scss';
+
+.statistics-page {
+  max-width: 1200px;
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.exit {
+  margin-left: auto;
+
+  button {
+    padding: 15px 30px;
+    cursor: pointer;
+  }
+}
+
+.btn-exit-statistics {
+  font-size: 30px;
+  border: none;
+  background-color: transparent;
+}
+
+h1, h3 {
+  margin: 10px auto;
+}
+
+.none-view {
+  display: none;
+}

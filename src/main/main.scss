@@ -157,7 +157,8 @@
   }
 
   .developer-container {
-    width: 80%;
+    width: 70%;
+    margin: 0 auto;
 
     .developer__card {
       display: flex;
@@ -269,5 +270,21 @@
   .greeting {
     justify-content: center;
     flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    .developer-container {
+      .developer__card {
+        flex-direction: column;
+        text-align: left;
+      }
+    }
+  }
+  .footer {
+    flex-direction: column;
+    height: auto;
+    gap: 20px;
   }
 }

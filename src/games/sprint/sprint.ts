@@ -3,7 +3,7 @@ import { IApiGetWords } from '../../types/apiTypes';
 import { pages, getRandomId, getRandomPage } from './randoms';
 import { goodAnswer, badAnswer, clearStat } from './functions';
 import { elem } from '../../utils/querySelectors';
-import timer from './timer';
+import { timer, stopTimer } from './timer';
 
 class Sprint {
   api: API;
@@ -30,25 +30,34 @@ class Sprint {
   async start(e: Event) {
     const target = e.target as Element;
     e.preventDefault();
-    this.group = target.getAttribute('data-level') as string;
-    this.page = getRandomPage();
+    document.body.classList.remove('loaded');
+    const state = localStorage.getItem('textbook');
+    if (state !== null && target.classList.contains('sprint-btn')) {
+      const textbookState = JSON.parse(state);
+      this.group = textbookState.group.toString();
+      this.page = textbookState.page.toString();
+    } else {
+      this.group = target.getAttribute('data-level') as string || '0';
+      this.page = getRandomPage();
+    }
     this.words = await this.api.getWordsSprint(this.group, this.page);
     this.startPlay(this.words);
-    timer();
   }
 
-  startPlay(words: Array<IApiGetWords>) {
+  async startPlay(words: Array<IApiGetWords>) {
     words.forEach((word) => {
       this.ids.push(word.id);
     });
     this.randomId = getRandomId(this.ids);
-    this.renderCard(this.ids[this.i], this.randomId);
+    await this.renderCard(this.ids[this.i], this.randomId);
+    timer();
   }
 
   stopPlay() {
     this.ids = [];
     this.i = 0;
     clearStat();
+    stopTimer();
   }
 
   answerHandler(e: Event) {
@@ -70,7 +79,9 @@ class Sprint {
       const target = e.target as Element;
       answerType = target.id;
     }
-    this.checkAnswer(answerType);
+    if (!document.querySelector('.sprint-play.none-view')) {
+      this.checkAnswer(answerType);
+    }
   }
 
   async renderCard(id: string, randomId: string) {
@@ -85,6 +96,7 @@ class Sprint {
     elem('#false').classList.remove('hover');
     elem('.word').textContent = word.word;
     elem('.translate').textContent = this.randomTranslate;
+    document.body.classList.add('loaded');
   }
 
   async checkAnswer(button_id: string) {
@@ -93,7 +105,7 @@ class Sprint {
     } else {
       badAnswer(this.ids[this.i]);
     }
-    if (this.i <= this.ids.length - 2) {
+    if (this.i < this.ids.length - 1) {
       this.i += 1;
     } else {
       pages.push(this.page);
@@ -102,6 +114,7 @@ class Sprint {
       this.words.forEach((word) => {
         this.ids.push(word.id);
       });
+      this.i += 1;
     }
     this.randomId = getRandomId(this.ids);
     await this.renderCard(this.ids[this.i], this.randomId);
